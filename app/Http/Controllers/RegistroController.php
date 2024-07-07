@@ -41,26 +41,26 @@ class RegistroController extends Controller
     public function registerEmpleado(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:50',
             'cedula' => 'required|string|max:50|unique:empleados',
-            'contrasenia' => 'required|string|min:8',
+            'contrasenia' => 'required|string|',
             'rol' => 'required|string|max:50',
             'correo' => 'required|string|email|max:50|unique:empleados',
-            'sueldo' => '0',
-        ],
-        [
+            'sueldo' => 'required|numeric', 
+        ], [
             'cedula.unique' => 'Cédula ya registrada',
             'correo.unique' => 'Correo ya registrado',
+            'sueldo.numeric' => 'El sueldo debe ser un valor numérico.',
         ]);
 
+        // Crear un nuevo empleado con los datos validados
         $empleado = new Empleado();
-        $empleado->nombre = $request->nombre;
         $empleado->cedula = $request->cedula;
-        $empleado->contrasenia = Hash::make($request->contrasenia);
-        $empleado->rol = 1;
+        $empleado->contrasenia = Hash::make($request->contrasenia); // Hashear la contraseña
+        $empleado->rol = $request->rol;
         $empleado->correo = $request->correo;
-        $empleado->sueldo = 0;
+        $empleado->sueldo = (double) $request->sueldo; // Convertir a tipo double
         $empleado->save();
+
 
         return back()->with('success', 'Empleado registrado correctamente');
     }

@@ -1,0 +1,88 @@
+/* Tabla general */
+h1{
+    text-align: center;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+body{
+    background-color: #5b8e2d;   
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-collapse: collapse;
+}
+
+/* Cabecera de la tabla */
+.table thead {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+/* Filas de la tabla */
+.table th, .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 2px solid black;
+}
+
+/* Bordes de la tabla */
+.table-bordered {
+    border: 2px solid black;
+}
+
+.table-bordered th, .table-bordered td {
+    border: 2px solid black;
+}
+
+/* Colores alternados para las filas */
+.table tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:nth-of-type(even) {
+    background-color: #ffffff;
+}
+
+/* Encabezados */
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid black;
+    font-weight: bold;
+}
+
+/* Hover effect */
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Alineación y tamaño del texto */
+.table th, .table td {
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Colores de fondo y texto */
+.table thead th {
+    background-color: #226622;
+    color: #ffffff;
+}
+
+.table tbody td {
+    color: #212529;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-responsive .table {
+        margin-bottom: 0;
+    }
+}

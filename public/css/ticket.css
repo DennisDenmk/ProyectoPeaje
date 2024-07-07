@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;    
+}
+body{
+    background: linear-gradient(150deg, #80A416, #08652c);
+    height: 100vh;
+
+}
+h1{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+.formulario {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+}
+label,input{
+    padding: 5px;
+    margin:10px;
+}

@@ -38,7 +38,7 @@ class LoginController extends Controller
 
                 if ($empleado && Auth::attempt(['cedula' => $credentials['cedula'], 'password' => $credentials['contrasenia']], false)) {
                     // Autenticación exitosa para empleado, redirigir a la página de menú de empleado
-                    return redirect()->intended('/profile');
+                    return redirect()->intended('/profile-empleado');
                 }
             }
         }

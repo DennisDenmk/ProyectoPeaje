@@ -59,6 +59,7 @@ class RegistroController extends Controller
         $empleado->rol = $request->rol;
         $empleado->correo = $request->correo;
         $empleado->sueldo = (double) $request->sueldo; // Convertir a tipo double
+        $empleado->id_peaje = 1;
         $empleado->save();
 
 

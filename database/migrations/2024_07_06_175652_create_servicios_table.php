@@ -15,8 +15,6 @@ class CreateServiciosTable extends Migration
                 $table->unsignedBigInteger('id_vehiculo');
                 $table->integer('servicio');
                 $table->boolean('disponibilidad');
-                $table->timestamps();
-
                 $table->foreign('id_cliente')->references('id_cliente')->on('clientes')->onDelete('cascade');
                 $table->foreign('id_vehiculo')->references('id_vehiculo')->on('vehiculos')->onDelete('cascade');
             });

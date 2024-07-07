@@ -13,31 +13,30 @@
         <h1>Inicio de Sesion</h1>
         <form method="POST" action="{{ route('login') }}">
             @csrf
-        
+
             <div>
                 <label for="cedula">Cédula</label>
                 <input id="cedula" type="text" name="cedula" value="{{ old('cedula') }}" required autofocus>
             </div>
-        
+
             <div>
                 <label for="contrasenia">Contraseña</label>
                 <input id="contrasenia" type="password" name="contrasenia" required>
             </div>
             <div>
-                <input type="checkbox" id="tipo_empleado" name="tipo_usuario[]" value="empleado">
-                <label for="tipo_empleado">Empleado</label>
+                <label for="tipo_usuario">Tipo de Usuario</label>
+                <select id="tipo_usuario" name="tipo_usuario" required>
+                    <option value="cliente">Cliente</option>
+                    <option value="empleado">Empleado</option>
+                </select>
             </div>
-            <div>
-                <input type="checkbox" id="tipo_cliente" name="tipo_usuario[]" value="cliente">
-                <label for="tipo_cliente">Cliente</label>
-            </div>
-        
+
             @error('cedula')
                 <span role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-        
+
             <button type="submit">Iniciar Sesión</button>
         </form>
     </div>

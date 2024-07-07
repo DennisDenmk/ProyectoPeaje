@@ -17,7 +17,7 @@ Route::get('/Account',[tablesController::class,'Account']);
 Route::get('/Service',[tablesController::class,'Service']);
 Route::get('/home',[tablesController::class,'Home'])->name('home');
 
-Route::get('/menu',[tablesController::class,'menu']);
+//Route::get('/menu',[tablesController::class,'menu']);
 Route::get('/Ant',[tablesController::class,'Ant']);
 
 

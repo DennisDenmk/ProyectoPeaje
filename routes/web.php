@@ -7,6 +7,7 @@ use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VehiculoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,3 +47,7 @@ Route::post('/menu/cambiar-contrasenia', [ProfileController::class, 'changePassw
 //Manejo de perfil como empleado
 Route::get('/profile-empleado', [ProfileController::class, 'showEmpleado'])->name('profile-empleado')->middleware('auth');
 Route::post('/guardar-placa', [ProfileController::class, 'guardarPlaca'])->name('guardar-placa');
+
+//Aumento de vehiculos mediante patron builder 
+Route::get('/vehiculos/create', [VehiculoController::class, 'create'])->name('vehiculos.create');
+Route::post('/vehiculos', [VehiculoController::class, 'store'])->name('vehiculos.store');

@@ -13,9 +13,7 @@ class Vehiculo extends Model
 
     protected $primaryKey = 'id_vehiculo'; // Nombre de la clave primaria en la tabla
 
-    protected $fillable = [
-        'placa', 'tipo_vehiculo', 'anio', 'id_cliente'
-    ];
+    protected $fillable = ['idVehiculo','placa','matricula', 'tipo_vehiculo', 'color', 'id_cliente','created_at','updated_at'];
 
     // Relación con Cliente
     public function cliente()

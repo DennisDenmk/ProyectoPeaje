@@ -55,7 +55,7 @@
                 <img src="{{asset('img/pnvl-icono-telepass-2.png')}}" alt="#" width="70px" height="70px">
                 <br>
 
-                <a href="http://localhost/example-app/public/telepassInfo" class="bnt">
+                <a href="http://localhost/example-app/public/telepass" class="bnt">
                     Saber mas</a>
             </div>
 
@@ -64,7 +64,7 @@
                 <h3>Consulta Saldo Telepas</h3>
                 <img src="{{asset('img/pngegg.png')}}" alt="#" width="100px" height="100px">
                 <br>
-                <a href="http://localhost/example-app/public/menuLogin" class="bnt">
+                <a href="{{ route('login.form') }}" class="bnt">
                     Saber mas</a>
             </div>
 

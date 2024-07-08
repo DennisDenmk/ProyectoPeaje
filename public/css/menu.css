@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     border: 0;
@@ -22,10 +22,17 @@ body {
 }
 
 .navbar a {
+    display: block;
     color: white;
     text-decoration: none;
-    padding: 0 20px;
+    padding: 20px 20px;
+    text-transform: uppercase;
     text-align: center;
+}
+
+.navbar a:hover {
+    padding: auto;
+    background: #5a8f2c;
 }
 
 .description {
@@ -35,12 +42,12 @@ body {
     text-align: center;
 }
 
-#userDescription{
+#userDescription {
     text-align: left;
     text-decoration: none;
 }
 
-#vehiclesDescription{
+#vehiclesDescription {
     text-align: left;
     text-decoration: none;
 }
@@ -57,27 +64,124 @@ input[type="submit"] {
     outline: none;
 
 }
-input[type="submit"]:hover{
-    background:  #80A416;
+
+input[type="submit"]:hover {
+    background: #80A416;
     transition: .5s;
 }
+
 .vehicles-menu {
     display: flex;
     justify-content: space-between;
     background-color: #226622;
     padding: 20px;
 }
+
 .vehicles-menu .left,
 .vehicles-menu .right {
     flex: 1;
 }
+
 .vehicles-menu .left {
     padding-right: 20px;
 }
+
 .vehicles-menu .right {
     padding-left: 20px;
     border-left: 1px solid white;
 }
+
 .vehicles-menu p {
     margin: 10px 0;
+}
+
+/* Descricion  Usuario*/
+#userDescription {
+    background-color: #9ACD32;
+    /* Fondo verde más claro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #000000;
+    /* Color del texto */
+
+}
+#userDescription h2 {
+    margin-top: 0;
+}
+
+#userDescription h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#userDescription p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+#userDescription strong {
+    font-weight: bold;
+}
+
+/* Descricion */
+#configDescription {
+    background-color: #9ACD32;
+    /* Fondo verde más claro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #000000;
+    /* Color del texto */
+
+}
+#configDescription h2 {
+    margin-top: 0;
+}
+
+#configDescription h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#configDescription p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+#configDescription  strong {
+    font-weight: bold;
+}
+
+/* Vehiculos */
+.vehicles-menu {
+    background-color: #9ACD32; /* Fondo verde más claro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #000000; /* Color del texto */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vehicles-menu .details {
+    font-size: 18px;
+}
+
+.vehicles-menu .add-button {
+    background-color: #006400; /* Fondo verde oscuro */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+.vehicles-menu .add-button:hover {
+    background-color: #4CAF50; /* Color de fondo cuando el mouse pasa por encima */
 }

@@ -1,4 +1,5 @@
 <?php
+// routes/web.php
 
 //uso de controladores
 use Illuminate\Support\Facades\Route;
@@ -7,29 +8,32 @@ use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VehiculoController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/database',[tablesController::class,'Tables']);
-Route::get('/Account',[tablesController::class,'Account']);
-Route::get('/Service',[tablesController::class,'Service']);
-Route::get('/home',[tablesController::class,'Home'])->name('home');
+Route::get('/database', [tablesController::class, 'Tables']);
+Route::get('/Account', [tablesController::class, 'Account']);
+Route::get('/Service', [tablesController::class, 'Service']);
+Route::get('/home', [tablesController::class, 'Home'])->name('home');
 
+<<<<<<< HEAD
 //Route::get('/menu',[tablesController::class,'menu']);
 Route::get('/Ant',[tablesController::class,'Ant']);
+=======
+Route::get('/menu', [tablesController::class, 'menu']);
+Route::get('/Ant', [tablesController::class, 'Ant']);
+>>>>>>> test
 
-
-Route::get('/telepassInfo',[Controller::class,'tele'])->name('telepass');
+Route::get('/telepassInfo', [Controller::class, 'tele'])->name('telepass');
 
 //-----RegistroCliente-------
 Route::get('/register', [RegistroController::class, 'showForm'])->name('register.form');
 Route::post('/register', [RegistroController::class, 'saveData'])->name('register.guardar');
 //-----RegistroEmpleado--
 Route::post('/registro', [RegistroController::class, 'registerEmpleado'])->name('registro.empleado');
-
-
 
 //------Pagina login-------
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
@@ -46,3 +50,6 @@ Route::post('/menu/cambiar-contrasenia', [ProfileController::class, 'changePassw
 //Manejo de perfil como empleado
 Route::get('/profile-empleado', [ProfileController::class, 'showEmpleado'])->name('profile-empleado')->middleware('auth');
 Route::post('/guardar-placa', [ProfileController::class, 'guardarPlaca'])->name('guardar-placa');
+
+// Rutas para Vehiculos
+Route::post('/vehiculos', [VehiculoController::class, 'store'])->name('vehiculos.store')->middleware('auth');

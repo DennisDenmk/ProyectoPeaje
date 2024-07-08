@@ -21,16 +21,16 @@ class CreateVehiculosTable extends Migration
                 $table->timestamps();
                 $table->foreign('id_cliente')->references('id_cliente')->on('clientes')->onDelete('cascade');
             });
-            
+            /*
             $faker = Faker::create();
             for ($i = 0; $i < 50; $i++) {
                 Vehiculo::create([
                     'placa' => $faker->unique()->regexify('[A-Z]{3}[0-9]{4}'),
-                    'tipo_vehiculo' => $faker->numberBetween(1, 5), // Ejemplo de tipos de vehículo
+                    'tipo_vehiculo' => $faker->numberBetween(1, 5),
                     'anio' => $faker->numberBetween(2000, 2023),
                     'id_cliente' => null,
                 ]);
-            }
+            }*/
         }
     }
 

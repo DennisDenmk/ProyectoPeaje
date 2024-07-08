@@ -19,13 +19,8 @@ Route::get('/Account', [tablesController::class, 'Account']);
 Route::get('/Service', [tablesController::class, 'Service']);
 Route::get('/home', [tablesController::class, 'Home'])->name('home');
 
-<<<<<<< HEAD
 //Route::get('/menu',[tablesController::class,'menu']);
 Route::get('/Ant',[tablesController::class,'Ant']);
-=======
-Route::get('/menu', [tablesController::class, 'menu']);
-Route::get('/Ant', [tablesController::class, 'Ant']);
->>>>>>> test
 
 Route::get('/telepassInfo', [Controller::class, 'tele'])->name('telepass');
 

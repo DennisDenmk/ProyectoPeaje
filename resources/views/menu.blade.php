@@ -1,3 +1,4 @@
+<!-- resources/views/menu.blade.php -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,6 +29,7 @@
         <p>Correo: {{ $user->correo }}</p>
         <p>Teléfono: {{ $user->telefono }}</p>
     </div>
+<<<<<<< HEAD
 
     <div class="description" id="configDescription">
         <p>Opción 1: Cambiar contraseña</p>
@@ -35,14 +37,20 @@
         <p>Opción 3: Configuración de privacidad</p>
     </div>
     <div class="description" id="vehiclesDescription">
+=======
+    <div class="description" id="userDescription" style="display:none;">
+        <!-- Aquí puedes agregar más detalles del usuario si es necesario -->
+    </div>
+    <div class="description" id="vehiclesDescription" style="display:none;">
+>>>>>>> test
         <div class="vehicles-menu">
             <div class="left">
                 <p>Detalles</p>
                 <p>Eliminar</p>
             </div>
             <div class="right">
-                <p>Vehiculos al nombre del usuario </p>
-                @if ($vehiculos->count() > 0)
+                <p>Vehículos al nombre del usuario </p>
+                @if ($vehiculos && $vehiculos->count() > 0)
                     <h2>Vehículos:</h2>
                     <ul>
                         @foreach ($vehiculos as $vehiculo)
@@ -60,9 +68,36 @@
             <input type="submit" value="Añadir Vehiculos">
         </div>
 
+        <!-- Formulario de registro de vehículos -->
+        <div class="vehicle-registration">
+            <h2>Registrar nuevo vehículo</h2>
+            @if(session('success'))
+                <div style="color: green;">
+                    {{ session('success') }}
+                </div>
+            @endif
+            <form action="{{ route('vehiculos.store') }}" method="POST">
+                @csrf
+                <label for="idVehiculo">ID Vehículo:</label>
+                <input type="text" id="idVehiculo" name="idVehiculo" required><br>
 
+                <label for="placa">Placa:</label>
+                <input type="text" id="placa" name="placa" required><br>
+
+                <label for="tipo_vehiculo">Tipo de Vehículo:</label>
+                <input type="text" id="tipo_vehiculo" name="tipo_vehiculo" required><br>
+
+                <label for="anio">Año:</label>
+                <input type="number" id="anio" name="anio" required><br>
+
+                <label for="id_cliente">ID Cliente:</label>
+                <input type="number" id="id_cliente" name="id_cliente" required><br>
+
+                <button type="submit">Registrar Vehículo</button>
+            </form>
+        </div>
     </div>
-    <div class="description" id="configDescription">
+    <div class="description" id="configDescription" style="display:none;">
         <p>Opción 1: Cambiar contraseña</p>
         <p>Opción 2: Actualizar email</p>
         <p>Opción 3: Configuración de privacidad</p>

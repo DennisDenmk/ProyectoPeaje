@@ -40,9 +40,16 @@ class LoginController extends Controller
             $empleado = Empleado::where('cedula', $credentials['cedula'])->first();
             Log::info('Empleado encontrado:', ['empleado' => $empleado]);
 
+<<<<<<< HEAD
             if ($empleado && $empleado->contrasenia === $credentials['contrasenia']) {
                 Auth::guard('empleado')->login($empleado);
                 return redirect()->intended('/profile-empleado');
+=======
+                if ($empleado && Auth::attempt(['cedula' => $credentials['cedula'], 'password' => $credentials['contrasenia']], false)) {
+                    // Autenticación exitosa para empleado, redirigir a la página de menú de empleado
+                    return redirect()->intended('/profile-empleado');
+                }
+>>>>>>> test
             }
         }
 

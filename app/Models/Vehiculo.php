@@ -13,9 +13,7 @@ class Vehiculo extends Model
 
     protected $primaryKey = 'id_vehiculo'; // Nombre de la clave primaria en la tabla
 
-    protected $fillable = [
-        'placa', 'tipo_vehiculo', 'anio', 'id_cliente'
-    ];
+    protected $fillable = ['placa', 'tipo_vehiculo', 'anio', 'id_cliente', 'created_at', 'updated_at'];
 
     // Relación con Cliente
     public function cliente()
@@ -23,4 +21,3 @@ class Vehiculo extends Model
         return $this->belongsTo(Cliente::class, 'id_cliente');
     }
 }
-

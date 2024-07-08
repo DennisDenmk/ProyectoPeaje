@@ -2,11 +2,10 @@
 
 namespace App\Builders;
 
-use App\Buiders\VehiculoInterface;
 use App\Models\Vehiculo;
 
-class VehiculoBuilder implements VehiculoInterface{
-
+class VehiculoBuilder implements VehiculoInterface
+{
     protected $vehiculo;
 
     public function __construct()
@@ -16,7 +15,7 @@ class VehiculoBuilder implements VehiculoInterface{
 
     public function setIdVehiculo($idVehiculo)
     {
-        $this->vehiculo->idVehiculo = $idVehiculo;
+        $this->vehiculo->id_vehiculo = $idVehiculo;
         return $this;
     }
 
@@ -26,21 +25,15 @@ class VehiculoBuilder implements VehiculoInterface{
         return $this;
     }
 
-    public function setMatricula($matricula)
-    {
-        $this->vehiculo->matricula = $matricula;
-        return $this;
-    }
-
     public function setTipoVehiculo($tipo_vehiculo)
     {
         $this->vehiculo->tipo_vehiculo = $tipo_vehiculo;
         return $this;
     }
 
-    public function setColor($color)
+    public function setAnio($anio)
     {
-        $this->vehiculo->color = $color;
+        $this->vehiculo->anio = $anio;
         return $this;
     }
 
@@ -54,5 +47,4 @@ class VehiculoBuilder implements VehiculoInterface{
     {
         return $this->vehiculo;
     }
-
 }

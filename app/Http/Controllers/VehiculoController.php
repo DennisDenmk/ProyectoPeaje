@@ -8,11 +8,6 @@ use App\Builders\VehiculoBuilder;
 
 class VehiculoController extends Controller
 {
-    public function create()
-    {
-        return view('create');
-    }
-
     // Este método maneja la lógica para almacenar un nuevo vehículo en la base de datos.
     public function store(Request $request)
     {
@@ -20,9 +15,8 @@ class VehiculoController extends Controller
         $request->validate([
             'idVehiculo' => 'required|integer',
             'placa' => 'required|string|max:10',
-            'matricula' => 'required|string|max:20',
             'tipo_vehiculo' => 'required|string|max:20',
-            'color' => 'required|string|max:20',
+            'anio' => 'required|integer',
             'id_cliente' => 'required|integer',
         ]);
 
@@ -30,16 +24,15 @@ class VehiculoController extends Controller
         $vehiculo = (new VehiculoBuilder())
             ->setIdVehiculo($request->input('idVehiculo'))
             ->setPlaca($request->input('placa'))
-            ->setMatricula($request->input('matricula'))
             ->setTipoVehiculo($request->input('tipo_vehiculo'))
-            ->setColor($request->input('color'))
+            ->setAnio($request->input('anio'))
             ->setIdCliente($request->input('id_cliente'))
             ->build();
 
         // Guardar el vehículo en la base de datos
         $vehiculo->save();
 
-        // Redirigir a una vista de éxito, por ejemplo
-        //return redirect()->route('home')->with('success', 'Vehículo creado correctamente.');
+        // Redirigir a la vista de perfil con un mensaje de éxito
+        return redirect()->route('profile')->with('success', 'Vehículo creado correctamente.');
     }
 }

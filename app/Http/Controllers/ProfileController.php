@@ -5,20 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Models\Vehiculo;
 
 class ProfileController extends Controller
 {
     public function show()
     {
         $user = Auth::user(); // Obtener el usuario autenticado
-        $vehiculos = $user->vehiculos;
+        $vehiculos = $user->vehiculos; // Obtener los vehículos del usuario
 
-        return view('menu', ['user' => $user, 'vehiculos' => $vehiculos]);
+        return view('menu', compact('user', 'vehiculos'));
     }
+
     public function showEmpleado()
     {
         $user = Auth::user(); // Obtener el usuario autenticado
-        return view('profile-empleado', ['user' => $user]);
+        return view('profile-empleado', compact('user'));
     }
 
     public function showChangePasswordForm()
@@ -26,7 +29,6 @@ class ProfileController extends Controller
         return view('menu.change-password');
     }
 
-    // FALTA EL CAMBIAR CONTRASEÑA YA ME CASE DE LA VIDA ARREGLEN
     /*
     public function changePassword(Request $request)
     {
@@ -37,15 +39,14 @@ class ProfileController extends Controller
 
         $user = Auth::user();
 
-        if (!Hash::check($request->current_password, $user->contrasenia)) {
+        if (!Hash::check($request->current_password, $user->password)) {
             return back()->withErrors(['current_password' => 'La contraseña actual no es correcta']);
         }
 
-        $user->contrasenia = Hash::make($request->new_password);
+        $user->password = Hash::make($request->new_password);
         $user->save();
 
         return redirect()->route('change-password-form')->with('status', 'Contraseña cambiada con éxito');
     }
-        */
-
+    */
 }

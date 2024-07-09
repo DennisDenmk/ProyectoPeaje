@@ -29,7 +29,6 @@
         <p>Correo: {{ $user->correo }}</p>
         <p>Teléfono: {{ $user->telefono }}</p>
     </div>
-<<<<<<< HEAD
 
     <div class="description" id="configDescription">
         <p>Opción 1: Cambiar contraseña</p>
@@ -37,12 +36,6 @@
         <p>Opción 3: Configuración de privacidad</p>
     </div>
     <div class="description" id="vehiclesDescription">
-=======
-    <div class="description" id="userDescription" style="display:none;">
-        <!-- Aquí puedes agregar más detalles del usuario si es necesario -->
-    </div>
-    <div class="description" id="vehiclesDescription" style="display:none;">
->>>>>>> test
         <div class="vehicles-menu">
             <div class="left">
                 <p>Detalles</p>

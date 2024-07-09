@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Finanza;
+use App\Models\Peaje;
 use Illuminate\Support\Facades\Auth;
 
-class EmpleadoController extends Controller
+class FinanzaController extends Controller
 {
+
     public function cobro(Request $request)
     {
         $request->validate([
@@ -26,6 +27,8 @@ class EmpleadoController extends Controller
             'tipo_vehiculo' => $request->tipo_vehiculo,
         ]);
 
-        return back()->with('success', 'Valor añadido correctamente');
+        return back()->with('success', 'Valor añadido correctamente.');
     }
+
+    
 }

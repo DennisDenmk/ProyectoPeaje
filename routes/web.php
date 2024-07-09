@@ -9,6 +9,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VehiculoController;
+use App\Http\Controllers\EmpleadoController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,8 +45,17 @@ Route::get('/menu/cambiar-contrasenia', [ProfileController::class, 'showChangePa
 Route::post('/menu/cambiar-contrasenia', [ProfileController::class, 'changePassword'])->name('change-password');
 
 //Manejo de perfil como empleado
-Route::get('/profile-empleado', [ProfileController::class, 'showEmpleado'])->name('profile-empleado')->middleware('auth');
-Route::post('/guardar-placa', [ProfileController::class, 'guardarPlaca'])->name('guardar-placa');
+Route::get('/profile-empleado', function () {
+    return view('profile-empleado');
+})->middleware('auth:empleado');
+
+Route::middleware(['auth:empleado'])->group(function () {
+    Route::post('/finanzas/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
+});
+
+Route::get('/administrador', function () {
+    return view('administrador');
+})->middleware('auth:empleado');
 
 // Rutas para Vehiculos
 Route::post('/vehiculos', [VehiculoController::class, 'store'])->name('vehiculos.store')->middleware('auth');

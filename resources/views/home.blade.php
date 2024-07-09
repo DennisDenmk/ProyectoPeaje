@@ -14,7 +14,7 @@
             <img src="{{asset('img/LogoPeaje.png')}}" alt="Panavial" height="90px">
         </div>
         <nav class="navegar">
-            <a href="{{ route('register.form') }}">Registrarce</a>
+            <a href="{{ route('register.form') }}">Registrate</a>
             <a href="{{ route('login.form') }}">Iniciar Sesion</a>
             <a href="{{ route('login.form') }}">Consulta Cuenta</a>
         </nav>

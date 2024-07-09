@@ -4,23 +4,24 @@
     <title>Empleado</title>
 </head>
 <body>
+    <!--
     <div class="profile">
         <h1>Perfil de Usuario</h1>
         <p>Cédula: {{ $user->cedula }}</p>
         <p>Correo: {{ $user->correo }}</p>
-        <p>Rol: {{ $user->rol }}</p>
     </div>
-
-    <h2>Ingresar Placa de Vehículo</h2>
-    <!--
-    <form method="POST" action="{{ route('guardar-placa') }}">
-        @csrf
-
-        <label for="placa">Placa:</label>
-        <input type="text" id="placa" name="placa" required>
-
-        <button type="submit">Guardar</button>
-    </form>
     -->
+    <form action="{{ route('finanzas.cobro') }}" method="POST">
+        @csrf
+        <div>
+            <label for="saldo">Saldo:</label>
+            <input type="number" name="saldo" id="saldo" required step="0.01">
+        </div>
+        <div>
+            <label for="tipo_vehiculo">Tipo de Vehículo:</label>
+            <input type="number" name="tipo_vehiculo" id="tipo_vehiculo" required>
+        </div>
+        <button type="submit">Añadir Finanza</button>
+    </form>
 </body>
 </html>

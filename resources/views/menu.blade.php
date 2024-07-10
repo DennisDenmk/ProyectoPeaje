@@ -25,9 +25,6 @@
     <div class="description" id="userDescription">
         <h1>Perfil de Usuario</h1>
         <p>Nombre: {{ $user->nombre }}</p>
-        <p>Cédula: {{ $user->cedula }}</p>
-        <p>Correo: {{ $user->correo }}</p>
-        <p>Teléfono: {{ $user->telefono }}</p>
     </div>
 
     <div class="description" id="configDescription">

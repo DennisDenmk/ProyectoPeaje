@@ -3,6 +3,7 @@
 
 //uso de controladores
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\tablesController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\Auth\LoginController;
@@ -46,12 +47,19 @@ Route::post('/menu/cambiar-contrasenia', [ProfileController::class, 'changePassw
 
 //Manejo de perfil como empleado
 Route::get('/profile-empleado', function () {
-    return view('profile-empleado');
-})->middleware('auth:empleado');
+    $user = Auth::guard('empleado')->user();
+    return view('profile-empleado', compact('user'));
+})->middleware('auth:empleado')->name('profile-empleado');
+
+//Metodo de cobro
+Route::post('/finanzas/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
 
 Route::middleware(['auth:empleado'])->group(function () {
     Route::post('/finanzas/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
 });
+//metodo recarga a cuenta
+Route::post('/finanzas/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
+Route::post('/clientes/recargar', [EmpleadoController::class, 'recargarSaldo'])->name('clientes.recargar');
 
 Route::get('/administrador', function () {
     return view('administrador');

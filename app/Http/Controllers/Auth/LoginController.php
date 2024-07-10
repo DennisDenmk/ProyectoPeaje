@@ -42,7 +42,7 @@ class LoginController extends Controller
 
             if ($empleado && $empleado->contrasenia === $credentials['contrasenia']) {
                 Auth::guard('empleado')->login($empleado);
-                // Verificar el rol del empleado
+                
                 if ($empleado->rol == 1) {
                     return redirect()->intended('/profile-empleado');
                 } elseif ($empleado->rol == 2) {

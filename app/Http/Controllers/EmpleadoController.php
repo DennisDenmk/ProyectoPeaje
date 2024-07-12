@@ -29,7 +29,7 @@ class EmpleadoController extends Controller
         Finanza::create([
             'id_peaje' => $empleado->id_peaje, // Obtener id_peaje del empleado autenticado
             'saldo' => $request->saldo,
-            'id_empleado' => $empleado->id_empleado,  // Obtener id_empleado del empleado autenticado
+           // 'id_empleado' => $empleado->id_empleado,  // Obtener id_empleado del empleado autenticado
             'fecha' => now(),  // Fecha actual del sistema
             'tipo_vehiculo' => $request->tipo_vehiculo,
         ]);

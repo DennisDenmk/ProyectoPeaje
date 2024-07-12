@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 //Modelos
-use App\Models\Cliente;
+use App\Models\Vehiculo;
 use App\Models\Finanza;
 
 class EmpleadoController extends Controller
 {
+
     public function cobro(Request $request)
     {
         $request->validate([
@@ -19,6 +20,11 @@ class EmpleadoController extends Controller
         ]);
 
         $empleado = Auth::user();
+
+        if (!$empleado) {
+            return back()->with('error', 'Usuario no autenticado.');
+        }
+
         
         Finanza::create([
             'id_peaje' => $empleado->id_peaje, // Obtener id_peaje del empleado autenticado
@@ -34,13 +40,16 @@ class EmpleadoController extends Controller
     public function recargarSaldo(Request $request)
     {
         $request->validate([
-            'cedula_cliente' => 'required|string|max:10|exists:clientes,cedula',
+            'placa' => 'required|string|max:7|exists:vehiculos,placa',
             'monto' => 'required|numeric|min:0.01',
         ]);
-
-        $cliente = Cliente::where('cedula', $request->cedula_cliente)->first();
-
-        if ($cliente) {
+    
+        // Buscar el vehículo por la placa
+        $vehiculo = Vehiculo::where('placa', $request->placa)->first();
+    
+        // Si el vehículo existe, obtener el cliente asociado
+        if ($vehiculo && $vehiculo->cliente) {
+            $cliente = $vehiculo->cliente;
             $cliente->saldo += $request->monto;
             $cliente->save();
 
@@ -49,5 +58,24 @@ class EmpleadoController extends Controller
             return back()->with('error', 'Cliente no encontrado.');
         }
     }
+
+    public function verFinanzas()
+    {
+        // Obtener todas las finanzas
+        $finanzas = Finanza::all();
+
+        // Calcular las ganancias por semana
+        $gananciasPorSemana = Finanza::selectRaw('YEAR(fecha) as year, WEEK(fecha, 1) as week, SUM(saldo) as total')
+            ->groupBy('year', 'week')
+            ->orderBy('year', 'asc')
+            ->orderBy('week', 'asc')
+            ->get()
+            ->mapWithKeys(function ($item) {
+                return ["{$item->year}-W{$item->week}" => $item->total];
+            });
+
+        return view('administrador', compact('finanzas', 'gananciasPorSemana'));
+    }
+   
 
 }

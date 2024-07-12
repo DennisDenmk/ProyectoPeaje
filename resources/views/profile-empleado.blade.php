@@ -65,8 +65,8 @@
         <form action="{{ route('clientes.recargar') }}" method="POST">
             @csrf
             <div>
-                <label for="cedula_cliente">Cédula del Cliente:</label>
-                <input type="text" name="cedula_cliente" id="cedula_cliente" required>
+                <label for="placa">Placa del Vehículo:</label>
+                <input type="text" name="placa" id="placa" required maxlength="7">
             </div>
             <div>
                 <label for="monto">Monto a Recargar:</label>
@@ -75,7 +75,7 @@
             <button type="submit">Recargar Saldo</button>
         </form>
     </div>
-    <div>
+    
         <form class="info-link" action="{{ route('logout') }}" method="POST" style="display: inline;">
             @csrf
             <button type="submit">Cerrar Sesión</button>

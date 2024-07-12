@@ -12,7 +12,6 @@ class Peaje extends Model
 
     protected $fillable = [
         'ubicacion',
-        'tarifa'
     ];
 
     // Relación con la tabla 'empleados'

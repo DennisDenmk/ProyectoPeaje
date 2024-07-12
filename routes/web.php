@@ -20,17 +20,22 @@ Route::get('/', function () {
 Route::get('/database', [tablesController::class, 'Tables']);
 Route::get('/Account', [tablesController::class, 'Account']);
 Route::get('/Service', [tablesController::class, 'Service']);
-Route::get('/home', [tablesController::class, 'Home'])->name('home');
+
+Route::get('/home', function () {
+    return view('home');
+});
 
 //Route::get('/menu',[tablesController::class,'menu']);
-Route::get('/Ant',[tablesController::class,'Ant']);
+Route::get('/Ant', [tablesController::class, 'Ant']);
 
 Route::get('/telepassInfo', [Controller::class, 'tele'])->name('telepass');
 
 //-----RegistroCliente-------
-Route::get('/register', [RegistroController::class, 'showForm'])->name('register.form');
-Route::post('/register', [RegistroController::class, 'saveData'])->name('register.guardar');
-//-----RegistroEmpleado--
+Route::prefix('register')->group(function () {
+    Route::get('/', [RegistroController::class, 'showForm'])->name('register.form');
+    Route::post('/', [RegistroController::class, 'saveData'])->name('register.guardar');
+});
+//-----RegistroEmpleado------
 Route::post('/registro', [RegistroController::class, 'registerEmpleado'])->name('registro.empleado');
 
 //------Pagina login-------
@@ -52,7 +57,6 @@ Route::get('/profile-empleado', function () {
 })->middleware('auth:empleado')->name('profile-empleado');
 
 //Metodo de cobro
-Route::post('/finanzas/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
 
 Route::middleware(['auth:empleado'])->group(function () {
     Route::post('/finanzas/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
@@ -64,6 +68,8 @@ Route::post('/clientes/recargar', [EmpleadoController::class, 'recargarSaldo'])-
 Route::get('/administrador', function () {
     return view('administrador');
 })->middleware('auth:empleado');
+
+Route::get('/administrador', [EmpleadoController::class, 'verFinanzas'])->middleware(['auth:empleado'])->name('administrador');
 
 // Rutas para Vehiculos
 Route::post('/vehiculos', [VehiculoController::class, 'store'])->name('vehiculos.store')->middleware('auth');

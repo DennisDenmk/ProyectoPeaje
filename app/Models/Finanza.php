@@ -9,6 +9,7 @@ class Finanza extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id_finanzas';
     protected $table = 'finanzas';
 
     protected $fillable = [
@@ -16,7 +17,8 @@ class Finanza extends Model
         'saldo',
         'id_empleado',
         'fecha',
-        'tipo_vehiculo',
+        'tipo_Vehiculo',
+        'tipo_pago'
     ];
 
     public function peaje()

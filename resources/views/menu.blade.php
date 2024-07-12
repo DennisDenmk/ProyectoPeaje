@@ -15,7 +15,6 @@
         <a href="javascript:void(0)" class="info-link" data-target="userDescription">INFO USUARIO</a>
         <a href="javascript:void(0)" class="info-link" data-target="vehiclesDescription">VEHICULOS REGISTRADOS</a>
         <a href="javascript:void(0)" class="info-link" data-target="configDescription">CONFIGURACION CUENTA</a>
-        <a href="{{ route('logout') }}" class="info-link" data-target="close">CERRAR SESION</a>
         <form class="info-link" action="{{ route('logout') }}" method="POST" style="display: inline;">
             @csrf
             <button type="submit">Cerrar Sesión</button>

@@ -11,7 +11,6 @@ class CreatePeajesTable extends Migration
             Schema::create('peajes', function (Blueprint $table) {
                 $table->id('id_peaje');
                 $table->string('ubicacion',50);
-                $table->double('tarifa', 8, 2);
                 $table->timestamps();
             });
         }

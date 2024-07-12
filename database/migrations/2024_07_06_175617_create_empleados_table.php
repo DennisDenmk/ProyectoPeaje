@@ -16,7 +16,6 @@ class CreateEmpleadosTable extends Migration
                 $table->integer('rol');
                 $table->unsignedBigInteger('id_peaje');
                 $table->string('correo',50)->unique();
-                $table->double('sueldo', 8, 2);
                 $table->timestamps();
                 $table->foreign('id_peaje')->references('id_peaje')->on('peajes')->onDelete('cascade');
             });

@@ -21,7 +21,6 @@ class Empleado extends Authenticatable
         'rol',
         'id_peaje',
         'correo',
-        'sueldo'
     ];
 
     // Relación con la tabla 'peajes'

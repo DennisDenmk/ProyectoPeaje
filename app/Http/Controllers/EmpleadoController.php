@@ -8,27 +8,44 @@ use Illuminate\Support\Facades\Auth;
 //Modelos
 use App\Models\Vehiculo;
 use App\Models\Finanza;
-use Illuminate\Support\Facades\Log;
+
 
 class EmpleadoController extends Controller
 {
+    public function showEmpleado()
+    {
+        $user = Auth::user(); // Obtener el usuario autenticado
+        return view('profile-empleado', compact('user'));
+    }
 
     public function cobro(Request $request)
     {
         $request->validate([
-            'saldo' => 'required|numeric',
             'tipo_vehiculo' => 'required|integer',
         ]);
 
         $empleado = Auth::user();
-        Log::info('Empleado autenticado:', ['empleado' => $empleado]);
+        
+        $saldos = [
+            1 => 1.00, // Moto
+            2 => 2.00, // Carro
+            3 => 3.00, // Camioneta
+            4 => 4.00, // Bus
+            5 => 5.00, // Tractor
+            7 => 0.20,  // moto
+            8 => 0.50  //remolque
+        ];
+
+        $tipo_vehiculo = $request->input('tipo_vehiculo');
+        $saldo = $saldos[$tipo_vehiculo];
 
         Finanza::create([
             'id_peaje' => $empleado->id_peaje, // Obtener id_peaje del empleado autenticado
-            'saldo' => $request->saldo,
+            'saldo' => $saldo,
             'fecha' => now(),  // Fecha actual del sistema
-            'tipo_vehiculo' => $request->tipo_vehiculo,
-            'tipo_pago' => $request->tipo_vehiculo,
+            'placa' => null,
+            'tipo_Vehiculo' => $request->tipo_vehiculo,
+            'tipo_pago' => '1',
         ]);
 
         return back()->with('success', 'Valor añadido correctamente');

@@ -15,25 +15,26 @@ class Cliente extends Authenticatable
     protected $fillable = [
         'nombre',
         'cedula',
-        'contrasenia',
+        'contrasenia', // Asegúrate de que este campo está correctamente nombrado
         'correo',
         'telefono',
         'saldo',
     ];
 
     protected $hidden = [
-        'contrasenia',
+        'contrasenia', // Asegúrate de que este campo está correctamente nombrado
     ];
 
     public function getAuthIdentifierName()
     {
         return 'cedula';
     }
+
     public function getAuthPassword()
     {
         return $this->contrasenia;
     }
-    
+
     public function vehiculos()
     {
         return $this->hasMany(Vehiculo::class, 'id_cliente');

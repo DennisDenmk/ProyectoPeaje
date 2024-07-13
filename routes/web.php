@@ -49,6 +49,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('auth');
 Route::get('/menu/cambiar-contrasenia', [ProfileController::class, 'showChangePasswordForm'])->name('change-password-form');
 Route::post('/menu/cambiar-contrasenia', [ProfileController::class, 'changePassword'])->name('change-password');
+Route::post('/menu/añadir-vehiculo', [VehiculoController::class, 'addVehicle'])->name('vehiculo.add');
 
 //Manejo de perfil como empleado
 Route::get('/profile-empleado', function () {
@@ -57,11 +58,10 @@ Route::get('/profile-empleado', function () {
 })->middleware('auth:empleado')->name('profile-empleado');
 
 //Metodo de cobro
+Route::post('/empleado/cobro', [EmpleadoController::class, 'cobro'])->middleware(['auth:empleado'])->name('finanzas.cobro');
 
-//metodo recarga a cuenta
-//Route::post('/finanzas/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
-Route::post('/finanzas/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
-Route::post('/clientes/recargar', [EmpleadoController::class, 'recargarSaldo'])->name('clientes.recargar');
+Route::post('/empleado/recarga', [EmpleadoController::class, 'recargarSaldo'])->name('clientes.recargar');
+
 
 Route::get('/administrador', function () {
     return view('administrador');

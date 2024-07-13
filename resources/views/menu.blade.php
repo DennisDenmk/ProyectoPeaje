@@ -61,28 +61,17 @@
         <div class="vehicle-registration">
             <h2>Registrar nuevo vehículo</h2>
             @if(session('success'))
-                <div style="color: green;">
+                <div style="color: rgb(9, 18, 9);">
                     {{ session('success') }}
                 </div>
             @endif
-            <form action="{{ route('vehiculos.store') }}" method="POST">
+            <form action="{{ route('vehiculo.add') }}" method="POST">
                 @csrf
-                <label for="idVehiculo">ID Vehículo:</label>
-                <input type="text" id="idVehiculo" name="idVehiculo" required><br>
-
-                <label for="placa">Placa:</label>
-                <input type="text" id="placa" name="placa" required><br>
-
-                <label for="tipo_vehiculo">Tipo de Vehículo:</label>
-                <input type="text" id="tipo_vehiculo" name="tipo_vehiculo" required><br>
-
-                <label for="anio">Año:</label>
-                <input type="number" id="anio" name="anio" required><br>
-
-                <label for="id_cliente">ID Cliente:</label>
-                <input type="number" id="id_cliente" name="id_cliente" required><br>
-
-                <button type="submit">Registrar Vehículo</button>
+                <div class="form-group">
+                    <label for="placa">Placa del Vehículo:</label>
+                    <input type="text" name="placa" id="placa" class="form-control" required maxlength="7">
+                </div>
+                <button type="submit" class="btn btn-primary">Añadir Vehículo</button>
             </form>
         </div>
     </div>

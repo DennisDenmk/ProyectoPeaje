@@ -4,42 +4,43 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Builders\VehiculoBuilder;
 use App\Models\Vehiculo;
-use App\Models\Cliente;
+use Illuminate\Support\Facades\Auth;
 
 class VehiculoController extends Controller
 {
     public function show(){
         return view('emularTelepass');
     }
-    // Este método maneja la lógica para almacenar un nuevo vehículo en la base de datos.
-    public function store(Request $request)
+    
+    public function addVehicle(Request $request)
     {
-        // Validar datos del formulario
         $request->validate([
-            'idVehiculo' => 'required|integer',
-            'placa' => 'required|string|max:10',
-            'tipo_vehiculo' => 'required|string|max:20',
-            'anio' => 'required|integer',
-            'id_cliente' => 'required|integer',
+            'placa' => 'required|string|max:7|exists:vehiculos,placa',
         ]);
 
-        // Crear el vehículo utilizando el Builder
-        $vehiculo = (new VehiculoBuilder())
-            ->setIdVehiculo($request->input('idVehiculo'))
-            ->setPlaca($request->input('placa'))
-            ->setTipoVehiculo($request->input('tipo_vehiculo'))
-            ->setAnio($request->input('anio'))
-            ->setIdCliente($request->input('id_cliente'))
-            ->build();
+        $cliente = Auth::user();
 
-        // Guardar el vehículo en la base de datos
+        if (!$cliente) {
+            return back()->with('error', 'Usuario no autenticado.');
+        }
+
+        $vehiculo = Vehiculo::where('placa', $request->placa)->first();
+
+        if (!$vehiculo) {
+            return back()->with('error', 'El vehículo no existe.');
+        }
+        if ($vehiculo->id_cliente) {
+            return back()->with('error', 'El vehículo ya tiene un dueño.');
+        }
+
+        // Asociar el vehículo con el cliente
+        $vehiculo->id_cliente = $cliente->id_cliente;
         $vehiculo->save();
 
-        // Redirigir a la vista de perfil con un mensaje de éxito
-        return redirect()->route('profile')->with('success', 'Vehículo creado correctamente.');
+        return back()->with('success', 'Vehículo añadido correctamente.');
     }
+
     public function cobro(Request $request)
     {
         $placa = $request->input('placa');

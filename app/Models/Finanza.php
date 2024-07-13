@@ -15,8 +15,8 @@ class Finanza extends Model
     protected $fillable = [
         'id_peaje',
         'saldo',
-        'id_empleado',
         'fecha',
+        'placa',
         'tipo_Vehiculo',
         'tipo_pago'
     ];
@@ -24,10 +24,5 @@ class Finanza extends Model
     public function peaje()
     {
         return $this->belongsTo(Peaje::class, 'id_peaje');
-    }
-
-    public function empleado()
-    {
-        return $this->belongsTo(Empleado::class, 'id_empleado');
     }
 }

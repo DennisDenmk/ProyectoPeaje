@@ -13,12 +13,12 @@ class CreateFinanzasTable extends Migration
             $table->unsignedBigInteger('id_peaje');
             $table->double('saldo', 8, 2);
             $table->date('fecha');
-            $table->string('placa');
+            $table->string('placa')->nullable();
             $table->integer('tipo_Vehiculo');
             $table->integer('tipo_pago');
             $table->timestamps();
             $table->foreign('id_peaje')->references('id_peaje')->on('peajes')->onDelete('cascade');
-            $table->foreign('placa')->references('placa')->on('vehiculos')->onDelete('cascade');
+            $table->foreign('placa')->references('placa')->on('vehiculos')->onDelete('cascade'); 
         });
     }
 

@@ -16,7 +16,7 @@ class CreateClientesTable extends Migration
                 $table->string('contrasenia');
                 $table->string('correo',50)->unique();
                 $table->string('telefono',15);
-                $table->double('saldo', 10, 2)->default(0);
+                $table->decimal('saldo', 8, 2)->default(0.00); // Campo para el saldo del cliente
                 $table->timestamps();
             });
         }

@@ -54,7 +54,7 @@
                     <p>No hay vehículos registrados.</p>
                 @endif
             </div>
-            <input type="submit" value="Añadir Vehiculos">
+           
         </div>
 
         <!-- Formulario de registro de vehículos -->

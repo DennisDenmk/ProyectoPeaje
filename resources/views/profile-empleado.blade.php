@@ -3,6 +3,7 @@
 
 <head>
     <title>Empleado</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -17,49 +18,34 @@
             {{ session('success') }}
         </div>
     @endif
-    <div>
+    <div class="mb-4">
+        <h2>Registrar Cobro</h2>
         <form action="{{ route('finanzas.cobro') }}" method="POST">
             @csrf
-            <input type="hidden" name="tipo_vehiculo" value="1">
-            <input type="hidden" name="saldo" value="1.00">
-            <button type="submit">Moto - $1.00</button>
-        </form>
-
-        <form action="{{ route('finanzas.cobro') }}" method="POST">
-            @csrf
-            <input type="hidden" name="tipo_vehiculo" value="2">
-            <input type="hidden" name="saldo" value="2.00">
-            <button type="submit">Carro - $2.00</button>
-        </form>
-
-        <form action="{{ route('finanzas.cobro') }}" method="POST">
-            @csrf
-            <input type="hidden" name="tipo_vehiculo" value="3">
-            <input type="hidden" name="saldo" value="3.00">
-            <button type="submit">Camioneta - $3.00</button>
-        </form>
-
-        <form action="{{ route('finanzas.cobro') }}" method="POST">
-            @csrf
-            <input type="hidden" name="tipo_vehiculo" value="4">
-            <input type="hidden" name="saldo" value="4.00">
-            <button type="submit">Bus - $4.00</button>
-        </form>
-
-        <form action="{{ route('finanzas.cobro') }}" method="POST">
-            @csrf
-            <input type="hidden" name="tipo_vehiculo" value="5">
-            <input type="hidden" name="saldo" value="5.00">
-            <button type="submit">Tractor - $5.00</button>
-        </form>
-
-        <form action="{{ route('finanzas.cobro') }}" method="POST">
-            @csrf
-            <input type="hidden" name="tipo_vehiculo" value="6">
-            <input type="hidden" name="saldo" value="6.00">
-            <button type="submit">Trailer - $6.00</button>
+            <div class="btn-group" role="group">
+                <button type="submit" name="tipo_vehiculo" value="1" class="btn btn-primary">
+                    Moto - $1.00
+                </button>
+                <button type="submit" name="tipo_vehiculo" value="2" class="btn btn-secondary">
+                    Carro - $2.00
+                </button>
+                <button type="submit" name="tipo_vehiculo" value="3" class="btn btn-success">
+                    Camioneta - $3.00
+                </button>
+                <button type="submit" name="tipo_vehiculo" value="4" class="btn btn-danger">
+                    Bus - $4.00
+                </button>
+                <button type="submit" name="tipo_vehiculo" value="5" class="btn btn-warning">
+                    Tractor - $5.00
+                </button>
+                <button type="submit" name="tipo_vehiculo" value="6" class="btn btn-info">
+                    Trailer - $6.00
+                </button>
+            </div>
+            <input type="hidden" name="saldo" id="saldo">
         </form>
     </div>
+
     <div>
         <h2>Recargar Saldo a Clientes</h2>
         <form action="{{ route('clientes.recargar') }}" method="POST">

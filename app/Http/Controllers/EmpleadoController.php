@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 //Modelos
 use App\Models\Vehiculo;
 use App\Models\Finanza;
+use Illuminate\Support\Facades\Log;
 
 class EmpleadoController extends Controller
 {
@@ -20,18 +21,14 @@ class EmpleadoController extends Controller
         ]);
 
         $empleado = Auth::user();
+        Log::info('Empleado autenticado:', ['empleado' => $empleado]);
 
-        if (!$empleado) {
-            return back()->with('error', 'Usuario no autenticado.');
-        }
-
-        
         Finanza::create([
             'id_peaje' => $empleado->id_peaje, // Obtener id_peaje del empleado autenticado
             'saldo' => $request->saldo,
-           // 'id_empleado' => $empleado->id_empleado,  // Obtener id_empleado del empleado autenticado
             'fecha' => now(),  // Fecha actual del sistema
             'tipo_vehiculo' => $request->tipo_vehiculo,
+            'tipo_pago' => $request->tipo_vehiculo,
         ]);
 
         return back()->with('success', 'Valor añadido correctamente');

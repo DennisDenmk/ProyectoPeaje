@@ -58,10 +58,8 @@ Route::get('/profile-empleado', function () {
 
 //Metodo de cobro
 
-Route::middleware(['auth:empleado'])->group(function () {
-    Route::post('/finanzas/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
-});
 //metodo recarga a cuenta
+//Route::post('/finanzas/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
 Route::post('/finanzas/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
 Route::post('/clientes/recargar', [EmpleadoController::class, 'recargarSaldo'])->name('clientes.recargar');
 

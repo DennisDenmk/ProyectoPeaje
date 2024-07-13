@@ -21,7 +21,7 @@ class CreateVehiculosTable extends Migration
                 $table->timestamps();
                 $table->foreign('id_cliente')->references('id_cliente')->on('clientes')->onDelete('cascade');
             });
-            /*
+            
             $faker = Faker::create();
             for ($i = 0; $i < 50; $i++) {
                 Vehiculo::create([
@@ -30,7 +30,7 @@ class CreateVehiculosTable extends Migration
                     'anio' => $faker->numberBetween(2000, 2023),
                     'id_cliente' => null,
                 ]);
-            }*/
+            }
         }
     }
 

@@ -69,12 +69,9 @@ Route::get('/administrador', function () {
 
 Route::get('/administrador', [EmpleadoController::class, 'verFinanzas'])->middleware(['auth:empleado'])->name('administrador');
 
-// Rutas para Vehiculos
-Route::post('/vehiculos', [VehiculoController::class, 'store'])->name('vehiculos.store')->middleware('auth');
-
 //Manejo de perfil como empleado
-Route::get('/profile-empleado', [ProfileController::class, 'showEmpleado'])->name('profile-empleado')->middleware('auth');
 Route::post('/guardar-placa', [ProfileController::class, 'guardarPlaca'])->name('guardar-placa');
 
 // Cobro de vehículos
-Route::post('/cobro', [VehiculoController::class, 'cobro'])->name('vehiculos.cobro');
+Route::get('/emularTelepass', [VehiculoController::class, 'show']);
+Route::post('/emularTelepass', [VehiculoController::class, 'cobro'])->name('vehiculos.cobro');

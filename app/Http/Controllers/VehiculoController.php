@@ -10,6 +10,9 @@ use App\Models\Cliente;
 
 class VehiculoController extends Controller
 {
+    public function show(){
+        return view('emularTelepass');
+    }
     // Este método maneja la lógica para almacenar un nuevo vehículo en la base de datos.
     public function store(Request $request)
     {

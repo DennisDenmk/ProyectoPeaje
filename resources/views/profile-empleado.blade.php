@@ -41,32 +41,6 @@
                 <input type="hidden" name="saldo" id="saldo">
             </form>
         </div>
-    <!--COBRO DE VEHICULO-->
-        <div class="description">
-            <h2>Cobrar a Cliente</h2>
-            @if(session('success'))
-                <div style="color: green;">
-                    {{ session('success') }}
-                </div>
-            @endif
-            @if($errors->any())
-                <div style="color: red;">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            <form action="{{ route('vehiculos.cobro') }}" method="POST">
-                @csrf
-                <label for="placa">Placa del Vehículo:</label>
-                <input type="text" id="placa" name="placa" required><br>
-
-                <button type="submit">Cobrar</button>
-            </form>
-        </div>
-
         <div>
             <h2>Recargar Saldo a Clientes</h2>
             <form action="{{ route('clientes.recargar') }}" method="POST">

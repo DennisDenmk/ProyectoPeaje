@@ -1,3 +1,4 @@
+
 body {
     margin: 0;
     padding: 0;
@@ -66,10 +67,11 @@ form .username {
 }
 
 .username input:focus~label,
-.username input:focus~label {
+.username input:not(:placeholder-shown)~label {
     top: -5px;
     color: #032b20;
 }
+
 
 .username input:focus~span::before,
 .username input:focus~span::before {

@@ -41,7 +41,7 @@
                     </div>
                     <div class="username">
                         <input type="password" id="contrasenia_confirmation" name="contrasenia_confirmation" value="{{ old('contrasenia_confirmation') }}">
-                        <label for="contrasenia_confirmation">Confirmar Contraseña:</label>
+                        <label for="contrasenia_confirmation">Confirmar contraseña:</label>
                     </div>
 
                     <div class="username">

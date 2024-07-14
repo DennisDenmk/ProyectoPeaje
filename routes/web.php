@@ -1,7 +1,6 @@
 <?php
 // routes/web.php
 
-//uso de controladores
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\tablesController;
@@ -13,68 +12,71 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VehiculoController;
 
-
+// Página principal
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/database', [tablesController::class, 'Tables']);
-Route::get('/Account', [tablesController::class, 'Account']);
-Route::get('/Service', [tablesController::class, 'Service']);
+// Rutas para tablas
+Route::prefix('tables')->group(function () {
+    Route::get('/database', [tablesController::class, 'Tables']);
+    Route::get('/Account', [tablesController::class, 'Account']);
+    Route::get('/Service', [tablesController::class, 'Service']);
+    Route::get('/Ant', [tablesController::class, 'Ant']);
+});
 
+// Página de inicio
 Route::get('/home', function () {
     return view('home');
 })->name('home');
 
-//Route::get('/menu',[tablesController::class,'menu']);
-Route::get('/Ant', [tablesController::class, 'Ant']);
-
+// Información de telepass
 Route::get('/telepassInfo', [Controller::class, 'tele'])->name('telepass');
 
-//-----RegistroCliente-------
+// Registro de usuarios
 Route::prefix('register')->group(function () {
     Route::get('/', [RegistroController::class, 'showForm'])->name('register.form');
     Route::post('/', [RegistroController::class, 'saveData'])->name('register.guardar');
+    // Registro de empleados
+    Route::post('/empleado', [RegistroController::class, 'registerEmpleado'])->name('registro.empleado');
 });
-//-----RegistroEmpleado------
-Route::post('/registro', [RegistroController::class, 'registerEmpleado'])->name('registro.empleado');
 
-//------Pagina login-------
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
-// Ruta para procesar el login (POST)
-Route::post('/login', [LoginController::class, 'login'])->name('login');
-// Ruta para cerrar sesión
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+// Login y Logout
+Route::prefix('auth')->group(function () {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+});
 
-//-------Manejo de Perfil------
-Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('auth');
-Route::post('/menu/cambiar-contrasenia', [ProfileController::class, 'updatePassword'])->name('updatePassword');
-Route::post('/menu/añadir-vehiculo', [VehiculoController::class, 'addVehicle'])->name('vehiculo.add');
+// Perfil del cliente
+Route::prefix('profile')->middleware('auth')->group(function () {
+    Route::get('/', [ProfileController::class, 'show'])->name('profile');
+    Route::post('/cambiar-contrasenia', [ProfileController::class, 'updatePassword'])->name('updatePassword');
+    Route::post('/guardar-placa', [ProfileController::class, 'guardarPlaca'])->name('guardar-placa');
+});
 
-//Manejo de perfil como empleado
-Route::get('/profile-empleado', function () {
-    $user = Auth::guard('empleado')->user();
-    return view('profile-empleado', compact('user'));
-})->middleware('auth:empleado')->name('profile-empleado');
+// Perfil del empleado
+Route::prefix('empleado')->middleware('auth:empleado')->group(function () {
+    Route::get('/profile', function () {
+        $user = Auth::guard('empleado')->user();
+        return view('profile-empleado', compact('user'));
+    })->name('profile-empleado');
+    Route::post('/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
+    Route::post('/recarga', [EmpleadoController::class, 'recargarSaldo'])->name('clientes.recargar');
+});
 
-//Metodo de cobro
-Route::post('/empleado/cobro', [EmpleadoController::class, 'cobro'])->middleware(['auth:empleado'])->name('finanzas.cobro');
+// Administración
+Route::prefix('admin')->middleware('auth:empleado')->group(function () {
+    Route::get('/', function () {
+        return view('administrador');
+    })->name('administrador');
+    Route::get('/finanzas', [AdminController::class, 'verFinanzas'])->name('admin.finanzas');
+    Route::post('/añadir-vehiculo', [VehiculoController::class, 'addVehicle'])->name('vehiculo.add');
+});
 
-Route::post('/empleado/recarga', [EmpleadoController::class, 'recargarSaldo'])->name('clientes.recargar');
-
-
-Route::get('/administrador', function () {
-    return view('administrador');
-})->middleware('auth:empleado');
-
-Route::get('/administrador', [AdminController::class, 'verFinanzas'])->middleware(['auth:empleado'])->name('administrador');
-
-// Asociar vehículo existente
-Route::post('/vehiculos/asociar', [VehiculoController::class, 'asociar'])->name('vehiculos.asociar');
-
-//Manejo de perfil como empleado
-Route::post('/guardar-placa', [ProfileController::class, 'guardarPlaca'])->name('guardar-placa');
-
-// Cobro de vehículos
-Route::get('/emularTelepass', [VehiculoController::class, 'show']);
-Route::post('/emularTelepass', [VehiculoController::class, 'cobro'])->name('vehiculos.cobro');
+// Vehículos
+Route::prefix('vehiculos')->group(function () {
+    Route::post('/asociar', [VehiculoController::class, 'asociar'])->name('vehiculos.asociar');
+    Route::get('/emularTelepass', [VehiculoController::class, 'show']);
+    Route::post('/emularTelepass', [VehiculoController::class, 'cobro'])->name('vehiculos.cobro');
+});

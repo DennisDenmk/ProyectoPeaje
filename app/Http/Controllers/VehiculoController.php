@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vehiculo;
-use App\Models\Cliente;
 use App\Models\Finanza;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,6 +33,7 @@ class VehiculoController extends Controller
 
         return back()->with('success', 'Vehículo asociado correctamente.');
     }
+
     public function cobro(Request $request)
     {
         $placa = $request->input('placa');
@@ -55,7 +55,8 @@ class VehiculoController extends Controller
             3 => 3.00, // Camioneta
             4 => 4.00, // Bus
             5 => 5.00, // Tractor
-            6 => 6.00  // Trailer
+            7 => 0.20,  // moto
+            8 => 0.50  //remolque
         ];
 
         if (!isset($tarifas[$tipo_vehiculo])) {

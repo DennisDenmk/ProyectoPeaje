@@ -23,7 +23,7 @@ class ProfileController extends Controller
         $user = Auth::user(); // Obtener el usuario autenticado
         return view('profile-empleado', compact('user'));
     }
-
+    
     public function updatePassword(Request $request)
     {
         $request->validate([
@@ -38,9 +38,10 @@ class ProfileController extends Controller
         }
 
         $cliente->contrasenia = Hash::make($request->new_password);
-        //$cliente->save(); // Debería funcionar correctamente si el modelo está bien configurado
+        $cliente->save();
 
         return back()->with('success', 'La contraseña ha sido cambiada exitosamente.');
     }
+ 
 }
 

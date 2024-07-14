@@ -9,21 +9,24 @@ use App\Models\Finanza;
 class AdminController extends Controller
 {
     
-    public function verFinanzas()
+    public function verFinanzas(Request $request)
     {
-        // Obtener todas las finanzas
-        $finanzas = Finanza::all();
+        $query = Finanza::query();
 
-        // Calcular las ganancias por semana
-        $gananciasPorSemana = Finanza::selectRaw('YEAR(fecha) as year, WEEK(fecha, 1) as week, SUM(saldo) as total')
-            ->groupBy('year', 'week')
-            ->orderBy('year', 'asc')
-            ->orderBy('week', 'asc')
-            ->get()
-            ->mapWithKeys(function ($item) {
-                return ["{$item->year}-W{$item->week}" => $item->total];
-            });
+        if ($request->filled('tipo_vehiculo')) {
+            $query->where('tipo_Vehiculo', $request->input('tipo_vehiculo'));
+        }
 
-        return view('administrador', compact('finanzas', 'gananciasPorSemana'));
+        if ($request->filled('fecha')) {
+            $query->whereDate('fecha', $request->input('fecha'));
+        }
+
+        if ($request->filled('tipo_pago')) {
+            $query->where('tipo_pago', $request->input('tipo_pago'));
+        }
+
+        $finanzas = $query->get();
+
+        return view('administrador', compact('finanzas'));
     }
 }

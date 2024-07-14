@@ -59,8 +59,24 @@
 
     <div class="description" id="configDescription" style="display:none;">
         <p>Opción 1: Cambiar contraseña</p>
-        <p>Opción 2: Actualizar email</p>
-        <p>Opción 3: Configuración de privacidad</p>
+        <div>
+            <form action="{{ route('updatePassword') }}" method="POST">
+                @csrf
+                <div>
+                    <label for="current_password">Contraseña Actual:</label>
+                    <input type="password" name="current_password" id="current_password" required>
+                </div>
+                <div>
+                    <label for="new_password">Nueva Contraseña:</label>
+                    <input type="password" name="new_password" id="new_password" required>
+                </div>
+                <div>
+                    <label for="new_password_confirmation">Confirmar Nueva Contraseña:</label>
+                    <input type="password" name="new_password_confirmation" id="new_password_confirmation" required>
+                </div>
+                <button type="submit">Cambiar Contraseña</button>
+            </form>
+        </div>
     </div>
 
     <script src="{{ asset('js/menu.js') }}"></script>

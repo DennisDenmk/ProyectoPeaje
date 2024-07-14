@@ -9,9 +9,9 @@ use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VehiculoController;
 
 
 Route::get('/', function () {
@@ -48,8 +48,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //-------Manejo de Perfil------
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('auth');
-Route::get('/menu/cambiar-contrasenia', [ProfileController::class, 'showChangePasswordForm'])->name('change-password-form');
-Route::post('/menu/cambiar-contrasenia', [ProfileController::class, 'changePassword'])->name('change-password');
+Route::post('/menu/cambiar-contrasenia', [ProfileController::class, 'updatePassword'])->name('updatePassword');
 Route::post('/menu/añadir-vehiculo', [VehiculoController::class, 'addVehicle'])->name('vehiculo.add');
 
 //Manejo de perfil como empleado

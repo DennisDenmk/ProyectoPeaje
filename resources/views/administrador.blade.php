@@ -38,47 +38,39 @@
                 <button type="submit">Asociar Vehículo</button>
             </form>
         </div>
-        <!-- Tabla de Finanzas -->
+        <form method="GET" action="{{ route('administrador') }}">
+            <div>
+                <label for="tipo_vehiculo">Tipo de Vehículo:</label>
+                <input type="number" name="tipo_vehiculo" id="tipo_vehiculo" value="{{ request('tipo_vehiculo') }}">
+            </div>
+            <div>
+                <label for="fecha">Fecha:</label>
+                <input type="date" name="fecha" id="fecha" value="{{ request('fecha') }}">
+            </div>
+            <div>
+                <label for="tipo_pago">Tipo de Pago:</label>
+                <input type="number" name="tipo_pago" id="tipo_pago" value="{{ request('tipo_pago') }}">
+            </div>
+            <button type="submit">Buscar</button>
+        </form>
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>ID Peaje</th>
                     <th>Saldo</th>
-                    <th>ID Empleado</th>
                     <th>Fecha</th>
                     <th>Tipo de Vehículo</th>
+                    <th>Tipo de Pago</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($finanzas as $finanza)
                     <tr>
-                        <td>{{ $finanza->id }}</td>
                         <td>{{ $finanza->id_peaje }}</td>
                         <td>{{ $finanza->saldo }}</td>
-                        <td>{{ $finanza->id_empleado }}</td>
                         <td>{{ $finanza->fecha }}</td>
-                        <td>{{ $finanza->tipo_vehiculo }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-        <h2>Ganancias por Semana</h2>
-
-        <!-- Tabla de Ganancias por Semana -->
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Semana</th>
-                    <th>Ganancia Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($gananciasPorSemana as $semana => $ganancia)
-                    <tr>
-                        <td>{{ $semana }}</td>
-                        <td>{{ $ganancia }}</td>
+                        <td>{{ $finanza->tipo_Vehiculo }}</td>
+                        <td>{{ $finanza->tipo_pago }}</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -19,12 +19,14 @@ class RegistroController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:50',
             'cedula' => 'required|string|max:50|unique:clientes',
-            'telefono' => 'required|string|max:10',
+            'telefono' => 'required|string|regex:/^09\d{8}$/',
             'correo' => 'required|string|email|max:50|unique:clientes',
-            'contrasenia' => 'required|string',
+            'contrasenia' => 'required|string|min:8|regex:/[a-zA-Z]/|confirmed',
         ],
         [
-            'cedula.unique' => 'Cédula ya registrada'
+            'cedula.unique' => 'Cédula ya registrada',
+            'contrasenia.regex' => 'La contraseña debe contener al menos una letra.',
+            'telefono.regex' => 'numero de celular incorrecto'
         ]);
 
         $cliente = new Cliente();

@@ -15,7 +15,7 @@ use App\Http\Controllers\VehiculoController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/database', [tablesController::class, 'Tables']);
@@ -24,7 +24,7 @@ Route::get('/Service', [tablesController::class, 'Service']);
 
 Route::get('/home', function () {
     return view('home');
-});
+})->name('home');
 
 //Route::get('/menu',[tablesController::class,'menu']);
 Route::get('/Ant', [tablesController::class, 'Ant']);

@@ -4,6 +4,7 @@
 <head>
     <title>Empleado</title>
     <link rel="stylesheet" href="{{ asset('css/empleado.css') }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="ico">
 </head>
 
 <body>

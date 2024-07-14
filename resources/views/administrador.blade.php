@@ -3,6 +3,7 @@
 <head>
     <title>Administrador - Finanzas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="ico">
 </head>
 <body>
     <div class="container mt-5">

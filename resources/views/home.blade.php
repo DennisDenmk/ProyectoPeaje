@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('css/home.css')}}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="ico">
     <title>Sistema de Peaje</title>
 </head>
 
 <body>
     <div class="head">
         <div class="logo">
-            <img src="{{asset('img/LogoPeaje.png')}}" alt="Panavial" height="90px">
+            <img src="{{asset('img/logo.png')}}" alt="Panavial" height="90px">
         </div>
         <nav class="navegar">
             <a href="{{ route('register.form') }}">Registrate</a>

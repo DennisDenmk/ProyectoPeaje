@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="ico">
     <link rel="stylesheet" href="{{asset('css/home.css')}}">        
     <title>Consultar Cuenta</title>
 </head>
 <body>
-
     <header class="content header">
         <div class="Explicacion">
             <p id="explicacion">

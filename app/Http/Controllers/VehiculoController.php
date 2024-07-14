@@ -12,33 +12,25 @@ class VehiculoController extends Controller
     public function show(){
         return view('emularTelepass');
     }
-    
-    public function addVehicle(Request $request)
+    // Este método maneja la lógica para almacenar un nuevo vehículo en la base de datos.
+    public function asociar(Request $request)
     {
         $request->validate([
-            'placa' => 'required|string|max:7|exists:vehiculos,placa',
+            'placa' => 'required|string|max:10',
         ]);
 
-        $cliente = Auth::user();
-
-        if (!$cliente) {
-            return back()->with('error', 'Usuario no autenticado.');
-        }
-
-        $vehiculo = Vehiculo::where('placa', $request->placa)->first();
+        $vehiculo = Vehiculo::where('placa', $request->input('placa'))->first();
 
         if (!$vehiculo) {
-            return back()->with('error', 'El vehículo no existe.');
-        }
-        if ($vehiculo->id_cliente) {
-            return back()->with('error', 'El vehículo ya tiene un dueño.');
+            return back()->withErrors(['placa' => 'El vehículo no está registrado.']);
         }
 
-        // Asociar el vehículo con el cliente
+        $cliente = auth()->user();
+
         $vehiculo->id_cliente = $cliente->id_cliente;
         $vehiculo->save();
 
-        return back()->with('success', 'Vehículo añadido correctamente.');
+        return back()->with('success', 'Vehículo asociado correctamente.');
     }
 
     public function cobro(Request $request)

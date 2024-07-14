@@ -69,6 +69,9 @@ Route::get('/administrador', function () {
 
 Route::get('/administrador', [EmpleadoController::class, 'verFinanzas'])->middleware(['auth:empleado'])->name('administrador');
 
+// Asociar vehículo existente
+Route::post('/vehiculos/asociar', [VehiculoController::class, 'asociar'])->name('vehiculos.asociar');
+
 //Manejo de perfil como empleado
 Route::post('/guardar-placa', [ProfileController::class, 'guardarPlaca'])->name('guardar-placa');
 

@@ -1,4 +1,3 @@
-<!-- resources/views/menu.blade.php -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -15,7 +14,7 @@
         <a href="javascript:void(0)" class="info-link" data-target="userDescription">INFO USUARIO</a>
         <a href="javascript:void(0)" class="info-link" data-target="vehiclesDescription">VEHICULOS REGISTRADOS</a>
         <a href="javascript:void(0)" class="info-link" data-target="configDescription">CONFIGURACION CUENTA</a>
-        <form class="info-link" action="{{ route('logout') }}" method="POST" style="display: inline;">
+        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
             @csrf
             <button type="submit">Cerrar Sesión</button>
         </form>
@@ -24,14 +23,12 @@
     <div class="description" id="userDescription">
         <h1>Perfil de Usuario</h1>
         <p>Nombre: {{ $user->nombre }}</p>
+        <p>Cédula: {{ $user->cedula }}</p>
+        <p>Correo: {{ $user->correo }}</p>
+        <p>Teléfono: {{ $user->telefono }}</p>
     </div>
 
-    <div class="description" id="configDescription">
-        <p>Opción 1: Cambiar contraseña</p>
-        <p>Opción 2: Actualizar email</p>
-        <p>Opción 3: Configuración de privacidad</p>
-    </div>
-    <div class="description" id="vehiclesDescription">
+    <div class="description" id="vehiclesDescription" style="display:none;">
         <div class="vehicles-menu">
             <div class="left">
                 <p>Detalles</p>
@@ -54,32 +51,42 @@
                     <p>No hay vehículos registrados.</p>
                 @endif
             </div>
-           
         </div>
 
         <!-- Formulario de registro de vehículos -->
-        <div class="vehicle-registration">
-            <h2>Registrar nuevo vehículo</h2>
+        <div class="vehicle-association">
+            <h2>Asociar vehículo existente</h2>
             @if(session('success'))
                 <div style="color: rgb(9, 18, 9);">
                     {{ session('success') }}
                 </div>
             @endif
-            <form action="{{ route('vehiculo.add') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="placa">Placa del Vehículo:</label>
-                    <input type="text" name="placa" id="placa" class="form-control" required maxlength="7">
+            @if($errors->any())
+                <div style="color: red;">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-                <button type="submit" class="btn btn-primary">Añadir Vehículo</button>
+            @endif
+            <form action="{{ route('vehiculos.asociar') }}" method="POST">
+                @csrf
+                <label for="placa">Placa del Vehículo:</label>
+                <input type="text" id="placa" name="placa" required><br>
+
+                <button type="submit">Asociar Vehículo</button>
             </form>
         </div>
+    
     </div>
+
     <div class="description" id="configDescription" style="display:none;">
         <p>Opción 1: Cambiar contraseña</p>
         <p>Opción 2: Actualizar email</p>
         <p>Opción 3: Configuración de privacidad</p>
     </div>
+
     <script src="{{ asset('js/menu.js') }}"></script>
 </body>
 

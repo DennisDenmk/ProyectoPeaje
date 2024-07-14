@@ -8,6 +8,10 @@ use App\Models\Finanza;
 
 class AdminController extends Controller
 {
+    public function showDashboard()
+    {
+        return view('administrador');
+    }
     
     public function verFinanzas(Request $request)
     {

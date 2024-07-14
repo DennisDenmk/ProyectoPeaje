@@ -66,13 +66,11 @@ Route::prefix('empleado')->middleware('auth:empleado')->group(function () {
 });
 
 // Administración
-Route::prefix('admin')->middleware('auth:empleado')->group(function () {
-    Route::get('/', function () {
-        return view('administrador');
-    })->name('administrador');
-    Route::get('/finanzas', [AdminController::class, 'verFinanzas'])->name('admin.finanzas');
-    Route::post('/añadir-vehiculo', [VehiculoController::class, 'addVehicle'])->name('vehiculo.add');
-});
+Route::get('/administrador', function () {
+    return view('administrador');
+})->middleware('auth:empleado');
+
+Route::get('/administrador', [AdminController::class, 'verFinanzas'])->middleware(['auth:empleado'])->name('administrador');
 
 // Vehículos
 Route::prefix('vehiculos')->group(function () {

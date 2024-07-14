@@ -53,11 +53,12 @@ Route::prefix('profile')->middleware('auth')->group(function () {
 });
 
 // Perfil del empleado
-Route::prefix('empleado')->middleware('auth:empleado')->group(function () {
-    Route::get('/profile', function () {
-        $user = Auth::guard('empleado')->user();
-        return view('profile-empleado', compact('user'));
-    })->name('profile-empleado');
+Route::get('/profile-empleado', function () {
+    $user = Auth::guard('empleado')->user();
+    return view('profile-empleado', compact('user'));
+})->name('profile-empleado');
+
+Route::prefix('empleado')->middleware('auth:empleado')->group(function () {   
     Route::post('/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
     Route::post('/recarga', [EmpleadoController::class, 'recargarSaldo'])->name('clientes.recargar');
 });

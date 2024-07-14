@@ -12,45 +12,45 @@
 
 <body>
     @include('components.header-nav')
-    
-    <div class="formulario">
-        <h1>Inicio de Sesion</h1>
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-
-            <div class="username">
-                <div>
-                    <input id="cedula" type="text" name="cedula" value="{{ old('cedula') }}" required autofocus>
-                    <label for="cedula">Cédula</label>
+    <main>
+        <div class="formulario">
+            <h1>Inicio de Sesion</h1>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="username">
+                    <div>
+                        <input id="cedula" type="text" name="cedula" value="{{ old('cedula') }}" required
+                            autofocus>
+                        <label for="cedula">Cédula</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="username">
-                <div>
-                    <input id="contrasenia" type="password" name="contrasenia" required>
-                    <label for="contrasenia">Contraseña</label>
+                <div class="username">
+                    <div>
+                        <input id="contrasenia" type="password" name="contrasenia" required>
+                        <label for="contrasenia">Contraseña</label>
+                    </div>
                 </div>
-            </div>
 
-            <div>
-                <label for="tipo_usuario">Tipo de Usuario</label>
-                <select id="tipo_usuario" name="tipo_usuario" required>
-                    <option value="cliente">Cliente</option>
-                    <option value="empleado">Empleado</option>
-                </select>
-            </div>
-            <br>
+                <div>
+                    <label for="tipo_usuario">Tipo de Usuario</label>
+                    <select id="tipo_usuario" name="tipo_usuario" required>
+                        <option value="cliente">Cliente</option>
+                        <option value="empleado">Empleado</option>
+                    </select>
+                </div>
+                <br>
 
 
-            @error('cedula')
-                <span role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            <button type="submit">Iniciar Sesión</button>
-        </form>
-    </div>
+                @error('cedula')
+                    <span role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </div>
+    </main>
 
 </body>
 

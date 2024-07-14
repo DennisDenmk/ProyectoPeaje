@@ -8,6 +8,36 @@
     <div class="container mt-5">
         <h2>Finanzas</h2>
 
+        <div>
+            <h2>Asociar vehículo existente</h2>
+            @if(session('success'))
+                <div style="color: rgb(9, 18, 9);">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if($errors->any())
+                <div style="color: red;">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form action="{{ route('vehiculos.asociar') }}" method="POST">
+                @csrf
+                <div>
+                    <label for="cedula">Cédula del Cliente:</label>
+                    <input type="text" name="cedula" id="cedula" required>
+                </div>
+                <div>
+                    <label for="placa">Placa:</label>
+                    <input type="text" name="placa" id="placa" required>
+                </div>
+
+                <button type="submit">Asociar Vehículo</button>
+            </form>
+        </div>
         <!-- Tabla de Finanzas -->
         <table class="table table-bordered">
             <thead>
@@ -53,6 +83,10 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div>
+
+        </div>
     </div>
 </body>
 </html>

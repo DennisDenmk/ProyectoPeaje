@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\AdminController;
 
 
 Route::get('/', function () {
@@ -67,7 +68,7 @@ Route::get('/administrador', function () {
     return view('administrador');
 })->middleware('auth:empleado');
 
-Route::get('/administrador', [EmpleadoController::class, 'verFinanzas'])->middleware(['auth:empleado'])->name('administrador');
+Route::get('/administrador', [AdminController::class, 'verFinanzas'])->middleware(['auth:empleado'])->name('administrador');
 
 // Asociar vehículo existente
 Route::post('/vehiculos/asociar', [VehiculoController::class, 'asociar'])->name('vehiculos.asociar');

@@ -54,30 +54,6 @@
         </div>
 
         <!-- Formulario de registro de vehículos -->
-        <div class="vehicle-association">
-            <h2>Asociar vehículo existente</h2>
-            @if(session('success'))
-                <div style="color: rgb(9, 18, 9);">
-                    {{ session('success') }}
-                </div>
-            @endif
-            @if($errors->any())
-                <div style="color: red;">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            <form action="{{ route('vehiculos.asociar') }}" method="POST">
-                @csrf
-                <label for="placa">Placa del Vehículo:</label>
-                <input type="text" id="placa" name="placa" required><br>
-
-                <button type="submit">Asociar Vehículo</button>
-            </form>
-        </div>
     
     </div>
 

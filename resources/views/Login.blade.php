@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="ico">
     <title>Login Cajero</title>
 </head>
 
 <body>
+    @include('components.header-nav')
+    
     <div class="formulario">
         <h1>Inicio de Sesion</h1>
         <form method="POST" action="{{ route('login') }}">

@@ -6,21 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('css/telepass.css')}}">  
     <link rel="stylesheet" href="{{asset('css/footer.css')}}"> 
+    <link rel="stylesheet" href="{{asset('css/nav.css')}}"> 
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="ico"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">       
     <title>Informe Telepass</title>
 </head>
 
 <body>
-    <header class="head">
-        <div class="logo">
-            <h1>Informe Telepass</h1>
-        </div>
-        <nav class="navegar">
-            <a href="{{ route('home') }}">Volver</a>
-        </nav>
-    </header>
-
+    @include('components.header-nav')
     <main class="principal">
         <section class="img-peajes">
         </section>

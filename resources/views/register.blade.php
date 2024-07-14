@@ -5,21 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="ico">
     <title>Registro</title>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <div class="nav-left">
-                <a href="{{ route('home') }}">INICIO</a>
-            </div>
-            <div class="nav-right">
-                <a href="{{ route('login.form') }}">Login</a>
-            </div>
-        </nav>
-    </header>
+    @include('components.header-nav')
     <main>
         <div class="formulario">
             <h1>Registro Telepass</h1>

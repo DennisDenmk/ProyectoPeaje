@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\tablesController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Controller;
+//use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\AdminController;
@@ -19,10 +19,9 @@ Route::get('/', function () {
 
 // Rutas para tablas
 Route::prefix('tables')->group(function () {
-    Route::get('/database', [tablesController::class, 'Tables']);
-    Route::get('/Account', [tablesController::class, 'Account']);
-    Route::get('/Service', [tablesController::class, 'Service']);
-    Route::get('/Ant', [tablesController::class, 'Ant']);
+    Route::get('/account', [tablesController::class, 'Account']);
+    Route::get('/service', [tablesController::class, 'Service'])->name('service');
+    Route::get('/Informacion', [tablesController::class, 'Telepass'])->name('telepass');
 });
 
 // Página de inicio
@@ -30,8 +29,6 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
-// Información de telepass
-Route::get('/telepassInfo', [Controller::class, 'tele'])->name('telepass');
 
 // Registro de usuarios
 Route::prefix('register')->group(function () {

@@ -1,4 +1,4 @@
-<header class="head">
+<header>
     <div class="logo">
         <h1>FastPeaje</h1>
     </div>

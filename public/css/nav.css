@@ -1,8 +1,6 @@
 /* Header Styles */
-.head {
+header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: #164b1e; /* Fondo verde oscuro */
     padding: 10px 20px; /* Aumenté el padding para más espacio */
     position: fixed;
@@ -10,7 +8,9 @@
     z-index: 100;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+.logo{
+    width: 50%;
+}
 .logo h1 {
     color: white;
     margin: 0;
@@ -19,7 +19,10 @@
 .navegar {
     display: flex;
     align-items: center; /* Alinea los items verticalmente */
+    justify-content: end;
+    padding-right: 50px;
     gap: 10px; /* Espacio entre los enlaces */
+    width: 50%;
 }
 
 .navegar a {
@@ -37,7 +40,7 @@
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .head {
+    header {
         flex-direction: column;
         align-items: flex-start;
         padding: 10px;

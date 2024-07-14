@@ -17,7 +17,7 @@ class Finanza extends Model
         'saldo',
         'fecha',
         'placa',
-        'tipo_Vehiculo',
+        'tipo_vehiculo',
         'tipo_pago'
     ];
 

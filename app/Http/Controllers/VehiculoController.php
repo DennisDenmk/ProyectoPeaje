@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Vehiculo;
 use App\Models\Cliente;
+use App\Models\Finanza;
 use Illuminate\Support\Facades\Auth;
 
 class VehiculoController extends Controller
 {
-    public function show(){
+    public function show()
+    {
         return view('emularTelepass');
     }
     // Este método maneja la lógica para almacenar un nuevo vehículo en la base de datos.
     public function asociar(Request $request)
     {
         $request->validate([
-            'cedula' => 'required|string|max:10',
-            'placa' => 'required|string|max:7',
+            'placa' => 'required|string|max:10',
         ]);
 
         $vehiculo = Vehiculo::where('placa', $request->input('placa'))->first();
@@ -27,18 +27,13 @@ class VehiculoController extends Controller
             return back()->withErrors(['placa' => 'El vehículo no está registrado.']);
         }
 
-        $cliente = Cliente::where('cedula', $request->input('cedula'))->first();
-
-        if (!$cliente) {
-            return back()->withErrors(['cedula' => 'El cliente no está registrado.']);
-        }
+        $cliente = auth()->user();
 
         $vehiculo->id_cliente = $cliente->id_cliente;
         $vehiculo->save();
 
         return back()->with('success', 'Vehículo asociado correctamente.');
     }
-
     public function cobro(Request $request)
     {
         $placa = $request->input('placa');
@@ -76,6 +71,20 @@ class VehiculoController extends Controller
         $cliente->saldo -= $costo;
         $cliente->save();
 
+        $empleado = Auth::guard('empleado')->user(); // Obtener el empleado autenticado
+
+        // Registrar el cobro en la tabla finanzas
+        Finanza::create([
+            'id_peaje' => $empleado->id_peaje,
+            'saldo' => $costo,
+            'fecha' => now(),
+            'placa' => $vehiculo->placa,
+            'tipo_vehiculo' => $tipo_vehiculo, // Nombre del campo ajustado
+            'tipo_pago' => 2 // Tipo 2 para pagos desde emularTelepass
+        ]);
+
         return back()->with('success', 'Cobro realizado con éxito. Saldo restante: ' . $cliente->saldo);
     }
+
+
 }

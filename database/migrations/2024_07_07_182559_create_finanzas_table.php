@@ -11,7 +11,7 @@ class CreateFinanzasTable extends Migration
         Schema::create('finanzas', function (Blueprint $table) {
             $table->id('id_finanzas');
             $table->unsignedBigInteger('id_peaje');
-            $table->double('saldo', 8, 2);
+            $table->double('saldo', 8, 2)->nullable();
             $table->date('fecha');
             $table->string('placa')->nullable();
             $table->integer('tipo_Vehiculo');

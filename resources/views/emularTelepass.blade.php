@@ -9,8 +9,8 @@
 </head>
 <body>
     <main>
-        <!--COBRO DE VEHICULO-->
-        <div class="description">
+       <!--COBRO DE VEHICULO-->
+       <div class="description">
             <h2>Cobrar a Cliente</h2>
             @if(session('success'))
                 <div style="color: green;">

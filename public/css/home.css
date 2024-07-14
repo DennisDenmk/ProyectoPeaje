@@ -129,59 +129,6 @@ main{
     background-color: #ccc;
 }
 
-footer {
-    background-color: #164b1e;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-footer .footer-section {
-    margin-bottom: 20px;
-}
-
-footer .footer-section h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-footer .footer-section ul {
-    list-style: none;
-}
-
-footer .footer-section ul li {
-    margin-bottom: 5px;
-}
-
-footer .footer-section ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-footer .footer-section ul li a:hover {
-    text-decoration: underline;
-}
-
-footer .socials {
-    margin-bottom: 20px;
-}
-
-footer .socials a {
-    color: white;
-    font-size: 24px;
-    margin: 0 10px;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-footer .socials a:hover {
-    color: #5a8f2c;
-}
-
-.footer-bottom {
-    font-size: 14px;
-}
-
 /* Media Queries */
 @media (max-width: 768px) {
     .main-header {

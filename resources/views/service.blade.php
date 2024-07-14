@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{asset('css/service.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/service.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="ico">
     <title>Tipos de Servicios</title>
 </head>
@@ -15,7 +17,7 @@
             <h1>Tipo De Servicios</h1>
         </div>
         <nav class="navegar">
-            <a href="http://localhost/example-app/public/home">Volver</a>
+            <a href="{{ route('home') }}">VOLVER AL INICIO</a>
         </nav>
     </header>
 
@@ -30,29 +32,30 @@
                 <br>
                 2.-Gestión de Carreteras: Optimizamos la administración de peajes en autopistas, puentes y túneles,
                 asegurando una gestión precisa y eficiente de los ingresos y el flujo vehicular.
-<br>
+                <br>
                 3.-Monitoreo y Seguridad: Implementamos sistemas avanzados de monitoreo y seguridad para garantizar un
                 tránsito seguro y confiable, protegiendo a los usuarios y a las infraestructuras.
-<br>
+                <br>
                 4.-Mantenimiento y Soporte: Ofrecemos mantenimiento continuo y soporte técnico especializado para
                 asegurar el correcto funcionamiento del sistema de peaje y minimizar cualquier tiempo de inactividad.
-<br>
+                <br>
                 5.-Integración de Sistemas: Facilitamos la integración de nuestro sistema de peaje con otras plataformas
                 y servicios, asegurando una operación coherente y eficiente.
-<br>
+                <br>
                 6.-Soluciones Personalizadas: Adaptamos nuestros servicios a las necesidades específicas de cada
                 cliente, proporcionando soluciones personalizadas para mejorar la experiencia de peaje y optimizar el
                 tránsito.
-<br>
+                <br>
                 Únase a nosotros y transforme su experiencia de viaje con nuestros servicios de peaje automatizado,
                 diseñados para ofrecer comodidad, seguridad y eficiencia.
             </p>
         </article>
 
         <section class="img-peajes">
-            <img id="ImgTel" src="{{asset('img/crane.jpg')}}" alt="Telepass">
+            <img id="ImgTel" src="{{ asset('img/crane.jpg') }}" alt="Telepass">
         </section>
     </main>
+    @include('components.footer')
 </body>
 
 </html>

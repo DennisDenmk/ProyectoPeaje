@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{asset('css/home.css')}}"> 
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <link rel="icon" href="favicon.ico" type="ico">
     <title>Sistema de Peaje</title>
     <!-- Incluye la biblioteca de FontAwesome para los iconos -->
@@ -49,7 +50,8 @@
                 </div>
                 <div class="box">
                     <h3>Informacion sobre registro</h3>
-                    <img src="{{ asset('img/pnvl-icono-telepass-2.png') }}" alt="#" width="70px" height="70px">
+                    <img src="{{ asset('img/pnvl-icono-telepass-2.png') }}" alt="#" width="70px"
+                        height="70px">
                     <br>
                     <a href="{{ route('telepass') }}" class="btn"> Saber mas</a>
                 </div>
@@ -63,24 +65,7 @@
             </div>
         </section>
     </main>
-    <footer>
-        <div class="footer-section contact">
-            <h2>Contacto</h2>
-            <ul>
-                <li>Teléfono: 0987242851</li>
-                <li>Email: info@peajesistema.com</li>
-            </ul>
-        </div>
-        <div class="socials">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2024 Sistema de Peaje. Todos los derechos reservados.
-        </div>
-    </footer>
+    @include('components.footer')
 </body>
 
 </html>

@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 // Rutas para tablas
-Route::prefix('tables')->group(function () {
+Route::prefix('/')->group(function () {
     Route::get('/account', [tablesController::class, 'Account']);
     Route::get('/service', [tablesController::class, 'Service'])->name('service');
     Route::get('/Informacion', [tablesController::class, 'Telepass'])->name('telepass');

@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -6,12 +7,17 @@ body {
     color: #333; /* Color del texto */
 }
 
+/* Header Styles */
 .head {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #164b1e;/* Color de fondo verde oscuro */
+    background-color: #164b1e;
     padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .logo h1 {
@@ -19,21 +25,28 @@ body {
     margin: 0;
 }
 
+.navegar {
+    display: flex;
+    gap: 10px;
+}
+
 .navegar a {
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
-    background-color: #4CAF50; /* Fondo verde más claro */
+    padding: 10px 15px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .navegar a:hover {
     background-color: #5a8f2c;
+    transform: translateY(-2px);
 }
 
+/* Main Content Styles */
 .principal {
     padding: 20px;
+    padding-top: 80px; /* Espacio para el encabezado fijo */
 }
 
 .img-peajes {
@@ -46,21 +59,30 @@ body {
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.img-peajes img:hover {
+    transform: scale(1.05);
 }
 
 .titulo {
     color: white;
     margin: 10px 0;
+    font-size: 24px;
+    font-weight: bold;
 }
 
+/* Explicacion Styles */
 .explicacion {
     background-color: #2c691d; /* Fondo verde oliva */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: #ffffff; /* Color del texto */
+    color: white; /* Color del texto */
     margin-bottom: 20px;
-    line-height: 1.5;
+    line-height: 1.6;
+    text-align: left;
 }
 
 .explicacion ul {
@@ -72,15 +94,48 @@ body {
     margin-bottom: 10px;
 }
 
-.requisito {
-    text-align: center;
-    margin: 20px 0;
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .head {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .navegar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        width: 100%;
+    }
+
+    .navegar a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .principal {
+        padding: 10px;
+        padding-top: 100px; /* Adjust for fixed header */
+    }
+
+    .explicacion {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .img-peajes img {
+        width: 90%;
+    }
 }
 
-.requisito h1 {
-    color: white;
-}
+@media (max-width: 480px) {
+    .titulo {
+        font-size: 20px;
+    }
 
-.quitar-margentop {
-    margin-top: 0;
+    .explicacion {
+        font-size: 12px;
+        padding: 10px;
+    }
 }

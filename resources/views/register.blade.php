@@ -28,7 +28,8 @@
                         <label for="cedula">Cédula:</label>
                     </div>
                     <div class="username">
-                        <input type="password" id="nombre" name="contrasenia" value="{{ old('contrasenia') }}">
+                        <input type="password" id="nombre" name="contrasenia" value="{{ old('contrasenia') }}"
+                         maxlength="10" pattern="\d{10}" required>
                         <label for="contrasenia">Contraseña:</label>
                     </div>
                     <div class="username">
@@ -42,7 +43,8 @@
                     </div>
                     <div class="username">
 
-                        <input type="text" id="nombre" name="telefono" value="{{ old('telefono') }}">
+                        <input type="text" id="nombre" name="telefono" value="{{ old('telefono') }}" 
+                        maxlength="10" pattern="\d{10}" required>
                         <label for="telefono">Teléfono:</label>
                     </div>
                     <button type="submit">Guardar Datos</button>
@@ -62,6 +64,7 @@
             </form>
         </div>
     </main>
+    <script src="{{ asset('js/validarCedula.js') }}"></script>
 </body>
 
 </html>

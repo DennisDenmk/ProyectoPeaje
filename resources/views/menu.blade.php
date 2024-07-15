@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cliente.css') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="ico">
     <title>Menu</title>
 </head>
 
-<body>
+<body class="center">
     <div class="navbar">
         <a href="javascript:void(0)" class="info-link" data-target="userDescription">INFO USUARIO</a>
         <a href="javascript:void(0)" class="info-link" data-target="vehiclesDescription">VEHICULOS REGISTRADOS</a>
         <a href="javascript:void(0)" class="info-link" data-target="configDescription">CONFIGURACION CUENTA</a>
-        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+        <form class="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
             @csrf
             <button type="submit">Cerrar Sesión</button>
         </form>
@@ -31,10 +31,7 @@
 
     <div class="description" id="vehiclesDescription" style="display:none;">
         <div class="vehicles-menu">
-            <div class="left">
-                <p>Detalles</p>
-                <p>Eliminar</p>
-            </div>
+
             <div class="right">
                 <p>Vehículos al nombre del usuario </p>
                 @if ($vehiculos && $vehiculos->count() > 0)
@@ -53,9 +50,6 @@
                 @endif
             </div>
         </div>
-
-        <!-- Formulario de registro de vehículos -->
-    
     </div>
 
     <div class="description" id="configDescription" style="display:none;">

@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar {
+    width: 90%; ;
+    background-color: #004d40;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0px 0px 40px #004d40;
+    border-radius: 8px;
+}
+
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.logout-form button {
+    background-color: #d32f2f;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-form button:hover {
+    background-color: #c62828;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+}
+
+.description {
+    background-color: #aed581;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 80%;
+    max-width: 600px;
+    text-align: left;
+}
+
+.description h1 {
+    margin-top: 0;
+    color: #33691e;
+}
+
+.description p {
+    color: #1b5e20;
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.vehicles-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.vehicles-menu .right p {
+    color: #1b5e20;
+    font-size: 18px;
+}
+
+.vehicles-menu .right ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.vehicles-menu .right ul li {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+form div {
+    margin-bottom: 10px;
+}
+
+form label {
+    font-weight: bold;
+    color: #004d40;
+}
+
+form input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #00796b;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #004d40;
+}

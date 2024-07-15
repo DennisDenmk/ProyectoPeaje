@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Administrador - Finanzas</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="ico">
 </head>
 <body>
@@ -12,12 +12,12 @@
         <div>
             <h2>Asociar vehículo existente</h2>
             @if(session('success'))
-                <div style="color: rgb(9, 18, 9);">
+                <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
             @endif
             @if($errors->any())
-                <div style="color: red;">
+                <div class="alert alert-danger">
                     <ul>
                         @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -35,7 +35,6 @@
                     <label for="placa">Placa:</label>
                     <input type="text" name="placa" id="placa" required>
                 </div>
-
                 <button type="submit">Asociar Vehículo</button>
             </form>
         </div>

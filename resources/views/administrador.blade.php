@@ -56,7 +56,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>ID Peaje</th>
+                    <th>Ubicación del Peaje</th>
                     <th>Saldo</th>
                     <th>Fecha</th>
                     <th>Tipo de Vehículo</th>
@@ -66,11 +66,11 @@
             <tbody>
                 @foreach($finanzas as $finanza)
                     <tr>
-                        <td>{{ $finanza->id_peaje }}</td>
+                        <td>{{ $finanza->peaje->ubicacion ?? 'N/A' }}</td>
                         <td>{{ $finanza->saldo }}</td>
                         <td>{{ $finanza->fecha }}</td>
-                        <td>{{ $finanza->tipo_Vehiculo }}</td>
-                        <td>{{ $finanza->tipo_pago }}</td>
+                        <td>{{ $categoriasVehiculos[$finanza->tipo_Vehiculo] ?? 'Desconocido' }}</td>
+                        <td>{{ $tiposPago[$finanza->tipo_pago] ?? 'Desconocido' }}</td>
                     </tr>
                 @endforeach
             </tbody>

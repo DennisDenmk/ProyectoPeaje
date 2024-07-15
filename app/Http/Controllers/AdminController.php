@@ -29,8 +29,24 @@ class AdminController extends Controller
             $query->where('tipo_pago', $request->input('tipo_pago'));
         }
 
-        $finanzas = $query->get();
+        $finanzas = $query->with('peaje')->get();
 
-        return view('administrador', compact('finanzas'));
+        $categoriasVehiculos = [
+            1 => 'Categoria 1',
+            2 => 'Categoria 2',
+            3 => 'Categoria 3',
+            4 => 'Categoria 4',
+            5 => 'Categoria 5',
+            6 => 'Categoria 6',
+            7 => 'Categoria 7',
+            8 => 'Categoria 8'
+        ];
+
+        $tiposPago = [
+            1 => 'Efectivo',
+            2 => 'Telepass'
+        ];
+
+        return view('administrador', compact('finanzas', 'categoriasVehiculos', 'tiposPago'));
     }
 }

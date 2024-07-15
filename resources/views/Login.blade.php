@@ -19,8 +19,7 @@
                 @csrf
                 <div class="username">
                     <div>
-                        <input id="cedula" type="text" name="cedula" value="{{ old('cedula') }}" required
-                            autofocus>
+                        <input id="cedula" type="text" name="cedula" value="{{ old('cedula') }}" maxlength="10" pattern="\d{10}" required>
                         <label for="cedula">Cédula</label>
                     </div>
                 </div>

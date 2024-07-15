@@ -20,11 +20,12 @@
                 <div class="username">
                     <div class="username">
 
-                        <input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}">
+                        <input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}" required>
                         <label for="nombre">Nombre:</label>
                     </div>
                     <div class="username">
-                        <input type="text" id="nombre" name="cedula" value="{{ old('cedula') }}">
+                        <input type="text" id="nombre" name="cedula" value="{{ old('cedula') }}" 
+                        maxlength="10" pattern="\d{10}" required>
                         <label for="cedula">Cédula:</label>
                     </div>
                     <div class="username">
@@ -33,16 +34,15 @@
                         <label for="contrasenia">Contraseña:</label>
                     </div>
                     <div class="username">
-                        <input type="password" id="contrasenia_confirmation" name="contrasenia_confirmation" value="{{ old('contrasenia_confirmation') }}">
+                        <input type="password" id="contrasenia_confirmation" name="contrasenia_confirmation" value="{{ old('contrasenia_confirmation') }}"required>
                         <label for="contrasenia_confirmation">Confirmar contraseña:</label>
                     </div>
 
                     <div class="username">
-                        <input type="email" id="nombre" name="correo" value="{{ old('correo') }}">
+                        <input type="email" id="nombre" name="correo" value="{{ old('correo') }}"required>
                         <label for="correo">Correo:</label>
                     </div>
                     <div class="username">
-
                         <input type="text" id="nombre" name="telefono" value="{{ old('telefono') }}" 
                         maxlength="10" pattern="\d{10}" required>
                         <label for="telefono">Teléfono:</label>

@@ -17,13 +17,14 @@
         </nav>
 
         <section class="contenedor estilo-fondo flex">
+
             <div class="mb-4 separador">
                 @if (session('success'))
-                    <div class="alert alert-success">
+                    <div id="alert-success" class="alert alert-success">
                         {{ session('success') }}
                     </div>
                 @elseif (session('error'))
-                    <div class="alert alert-danger">
+                    <div id="alert-error" class="alert alert-danger">
                         {{ session('error') }}
                     </div>
                 @endif
@@ -31,66 +32,61 @@
                 <form action="{{ route('finanzas.cobro') }}" method="POST">
                     @csrf
                     <input type="hidden" name="tipo_Vehiculo" value="1">
-                    <input type="hidden" name="saldo" value="1.00">
+                    <input type="hidden" name="saldo">
                     <button type="submit">Categoria 1</button>
                 </form>
 
                 <form action="{{ route('finanzas.cobro') }}" method="POST">
                     @csrf
                     <input type="hidden" name="tipo_Vehiculo" value="2">
-                    <input type="hidden" name="saldo" value="2.00">
+                    <input type="hidden" name="saldo">
                     <button type="submit">Categoria 2</button>
                 </form>
 
                 <form action="{{ route('finanzas.cobro') }}" method="POST">
                     @csrf
                     <input type="hidden" name="tipo_Vehiculo" value="3">
-                    <input type="hidden" name="saldo" value="3.00">
+                    <input type="hidden" name="saldo">
                     <button type="submit">Categoria 3</button>
                 </form>
 
                 <form action="{{ route('finanzas.cobro') }}" method="POST">
                     @csrf
                     <input type="hidden" name="tipo_Vehiculo" value="4">
-                    <input type="hidden" name="saldo" value="4.00">
+                    <input type="hidden" name="saldo">
                     <button type="submit">Categoria 4</button>
                 </form>
 
                 <form action="{{ route('finanzas.cobro') }}" method="POST">
                     @csrf
                     <input type="hidden" name="tipo_Vehiculo" value="5">
-                    <input type="hidden" name="saldo" value="5.00">
+                    <input type="hidden" name="saldo">
                     <button type="submit">Categoria 5</button>
                 </form>
 
                 <form action="{{ route('finanzas.cobro') }}" method="POST">
                     @csrf
                     <input type="hidden" name="tipo_Vehiculo" value="6">
-                    <input type="hidden" name="saldo" value="6.00">
+                    <input type="hidden" name="saldo">
                     <button type="submit">Categoria 6</button>
                 </form>
 
                 <form action="{{ route('finanzas.cobro') }}" method="POST">
                     @csrf
                     <input type="hidden" name="tipo_Vehiculo" value="7">
-                    <input type="hidden" name="saldo" value="6.00">
+                    <input type="hidden" name="saldo">
                     <button type="submit">Motos</button>
                 </form>
 
                 <form action="{{ route('finanzas.cobro') }}" method="POST">
                     @csrf
                     <input type="hidden" name="tipo_Vehiculo" value="8">
-                    <input type="hidden" name="saldo" value="6.00">
+                    <input type="hidden" name="saldo">
                     <button type="submit">Remolque</button>
-                </form>
-                
-
                 </form>
 
             </div>
-        
-        
-    
+
             <div class="separador">
                 <h2>Recargar Saldo a Clientes</h2>
                 <form action="{{ route('clientes.recargar') }}" method="POST">
@@ -104,22 +100,26 @@
                         <input type="number" name="monto" id="monto" required step="0.01">
                     </div>
                     <button type="submit">Recargar Saldo</button>
-
-                    <br>
-
-                    @if (session('success'))
-                    <div style="color: green;">
-                        {{ session('success') }}
-                    </div>
-                    @endif
-                    <form class="info-link" action="{{ route('logout') }}" method="POST" style="display: inline;">
-                        @csrf
-                        <button type="submit">Cerrar Sesión</button>
-                    </form>
+                </form>
+                <form class="info-link" action="{{ route('logout') }}" method="POST" style="display: inline;">
+                    @csrf
+                    <button type="submit">Cerrar Sesión</button>
                 </form>
             </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    const alertSuccess = document.getElementById("alert-success");
+                    const alertSuccessRecarga = document.getElementById("alert-success-recarga");
 
-        
+                    if (alertSuccess) {
+                        alert(alertSuccess.textContent.trim());
+                    }
+
+                    if (alertSuccessRecarga) {
+                        alert(alertSuccessRecarga.textContent.trim());
+                    }
+                });
+            </script>
         </section>
 
     </div>

@@ -58,7 +58,7 @@ Route::get('/profile-empleado', function () {
     return view('profile-empleado', compact('user'));
 })->name('profile-empleado');
 
-Route::prefix('empleado')->middleware('auth:empleado')->group(function () {   
+Route::prefix('empleado')->middleware('auth:empleado')->group(function () {
     Route::post('/cobro', [EmpleadoController::class, 'cobro'])->name('finanzas.cobro');
     Route::post('/recarga', [EmpleadoController::class, 'recargarSaldo'])->name('clientes.recargar');
 });
@@ -73,6 +73,7 @@ Route::get('/administrador', [AdminController::class, 'verFinanzas'])->middlewar
 // Vehículos
 Route::prefix('vehiculos')->group(function () {
     Route::post('/asociar', [VehiculoController::class, 'asociar'])->name('vehiculos.asociar');
-    Route::get('/emularTelepass', [VehiculoController::class, 'show']);
-    Route::post('/emularTelepass', [VehiculoController::class, 'cobro'])->name('vehiculos.cobro');
 });
+
+Route::get('/emularTelepass', [VehiculoController::class, 'show']);
+Route::post('/emularTelepass', [VehiculoController::class, 'cobro'])->name('vehiculos.cobro');

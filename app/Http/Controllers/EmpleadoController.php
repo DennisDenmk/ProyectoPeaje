@@ -21,7 +21,7 @@ class EmpleadoController extends Controller
     public function cobro(Request $request)
     {
         $request->validate([
-            'tipo_vehiculo' => 'required|integer',
+            'tipo_Vehiculo' => 'required|integer',
         ]);
 
         $empleado = Auth::user();
@@ -36,8 +36,8 @@ class EmpleadoController extends Controller
             8 => 0.50  //remolque
         ];
 
-        $tipo_vehiculo = $request->input('tipo_vehiculo');
-        $saldo = $saldos[$tipo_vehiculo];
+        $tipo_Vehiculo = $request->input('tipo_Vehiculo');
+        $saldo = $saldos[$tipo_Vehiculo];
 
         Finanza::create([
             'id_peaje' => $empleado->id_peaje, // Obtener id_peaje del empleado autenticado

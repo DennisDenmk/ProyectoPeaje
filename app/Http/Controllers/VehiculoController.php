@@ -36,7 +36,13 @@ class VehiculoController extends Controller
 
     public function cobro(Request $request)
     {
+        $request->validate([
+            'id_peaje' => 'required|integer',
+            'placa' => 'required|string',
+        ]);
+
         $placa = $request->input('placa');
+        $id_peaje = $request->input('id_peaje');
         $vehiculo = Vehiculo::where('placa', $placa)->first();
 
         if (!$vehiculo) {
@@ -76,11 +82,11 @@ class VehiculoController extends Controller
 
         // Registrar el cobro en la tabla finanzas
         Finanza::create([
-            'id_peaje' => $empleado->id_peaje,
+            'id_peaje' => $id_peaje,
             'saldo' => $costo,
             'fecha' => now(),
             'placa' => $vehiculo->placa,
-            'tipo_vehiculo' => $tipo_vehiculo, // Nombre del campo ajustado
+            'tipo_Vehiculo' => $vehiculo->tipo_vehiculo, // Nombre del campo ajustado
             'tipo_pago' => 2 // Tipo 2 para pagos desde emularTelepass
         ]);
 

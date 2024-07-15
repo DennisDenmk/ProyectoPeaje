@@ -15,7 +15,7 @@ class CreateVehiculosTable extends Migration
             Schema::create('vehiculos', function (Blueprint $table) {
                 $table->id('id_vehiculo');
                 $table->string('placa', 7)->unique();
-                $table->integer('tipo_vehiculo');
+                $table->integer('tipo_Vehiculo');
                 $table->string('anio',4);
                 $table->unsignedBigInteger('id_cliente')->nullable();
                 $table->timestamps();
@@ -26,7 +26,7 @@ class CreateVehiculosTable extends Migration
             for ($i = 0; $i < 50; $i++) {
                 Vehiculo::create([
                     'placa' => $faker->unique()->regexify('[A-Z]{3}[0-9]{4}'),
-                    'tipo_vehiculo' => $faker->numberBetween(1, 5),
+                    'tipo_Vehiculo' => $faker->numberBetween(1, 5),
                     'anio' => $faker->numberBetween(2000, 2023),
                     'id_cliente' => null,
                 ]);

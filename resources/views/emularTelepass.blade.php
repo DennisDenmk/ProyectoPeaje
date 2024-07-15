@@ -29,10 +29,15 @@
             @endif
             <form action="{{ route('vehiculos.cobro') }}" method="POST">
                 @csrf
-                <label for="placa">Placa del Vehículo:</label>
-                <input type="text" id="placa" name="placa" required><br>
-
-                <button type="submit">Cobrar</button>
+                <div class="form-group">
+                    <label for="id_peaje">ID del Peaje:</label>
+                    <input type="number" name="id_peaje" id="id_peaje" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="placa">Placa del Vehículo:</label>
+                    <input type="text" name="placa" id="placa" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Realizar Cobro</button>
             </form>
         </div>
     </main>

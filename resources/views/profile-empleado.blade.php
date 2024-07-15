@@ -28,14 +28,14 @@
             <h2>Registrar Cobro</h2>
             <form action="{{ route('finanzas.cobro') }}" method="POST">
                 @csrf
-                <input type="hidden" name="tipo_vehiculo" value="1">
+                <input type="hidden" name="tipo_Vehiculo" value="1">
                 <input type="hidden" name="saldo" value="1.00">
                 <button type="submit">Categoria 1</button>
             </form>
 
             <form action="{{ route('finanzas.cobro') }}" method="POST">
                 @csrf
-                <input type="hidden" name="tipo_vehiculo" value="2">
+                <input type="hidden" name="tipo_Vehiculo" value="2">
                 <input type="hidden" name="saldo" value="2.00">
                 <button type="submit">Categoria 2</button>
             </form>
@@ -56,28 +56,28 @@
 
             <form action="{{ route('finanzas.cobro') }}" method="POST">
                 @csrf
-                <input type="hidden" name="tipo_vehiculo" value="5">
+                <input type="hidden" name="tipo_Vehiculo" value="5">
                 <input type="hidden" name="saldo" value="5.00">
                 <button type="submit">Categoria 5</button>
             </form>
 
             <form action="{{ route('finanzas.cobro') }}" method="POST">
                 @csrf
-                <input type="hidden" name="tipo_vehiculo" value="6">
+                <input type="hidden" name="tipo_Vehiculo" value="6">
                 <input type="hidden" name="saldo" value="6.00">
                 <button type="submit">Categoria 6</button>
             </form>
 
             <form action="{{ route('finanzas.cobro') }}" method="POST">
                 @csrf
-                <input type="hidden" name="tipo_vehiculo" value="7">
+                <input type="hidden" name="tipo_Vehiculo" value="7">
                 <input type="hidden" name="saldo" value="6.00">
                 <button type="submit">Motos</button>
             </form>
 
             <form action="{{ route('finanzas.cobro') }}" method="POST">
                 @csrf
-                <input type="hidden" name="tipo_vehiculo" value="8">
+                <input type="hidden" name="tipo_Vehiculo" value="8">
                 <input type="hidden" name="saldo" value="6.00">
                 <button type="submit">Remolque</button>
             </form>

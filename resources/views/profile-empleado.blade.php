@@ -42,14 +42,14 @@
 
             <form action="{{ route('finanzas.cobro') }}" method="POST">
                 @csrf
-                <input type="hidden" name="tipo_vehiculo" value="3">
+                <input type="hidden" name="tipo_Vehiculo" value="3">
                 <input type="hidden" name="saldo" value="3.00">
                 <button type="submit">Categoria 3</button>
             </form>
 
             <form action="{{ route('finanzas.cobro') }}" method="POST">
                 @csrf
-                <input type="hidden" name="tipo_vehiculo" value="4">
+                <input type="hidden" name="tipo_Vehiculo" value="4">
                 <input type="hidden" name="saldo" value="4.00">
                 <button type="submit">Categoria 4</button>
             </form>

@@ -44,7 +44,7 @@ class EmpleadoController extends Controller
             'saldo' => $saldo,
             'fecha' => now(),  // Fecha actual del sistema
             'placa' => null,
-            'tipo_Vehiculo' => $request->tipo_vehiculo,
+            'tipo_Vehiculo' => $request->tipo_Vehiculo,
             'tipo_pago' => '1',
         ]);
 

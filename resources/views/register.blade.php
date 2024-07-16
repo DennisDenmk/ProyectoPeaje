@@ -29,8 +29,7 @@
                         <label for="cedula">Cédula:</label>
                     </div>
                     <div class="username">
-                        <input type="password" id="nombre" name="contrasenia" value="{{ old('contrasenia') }}"
-                         maxlength="10" pattern="\d{10}" required>
+                        <input type="password" id="nombre" name="contrasenia" value="{{ old('contrasenia') }}" required>
                         <label for="contrasenia">Contraseña:</label>
                     </div>
                     <div class="username">

@@ -65,6 +65,22 @@ form button {
     font-size: 16px;
     transition: transform 0.2s, box-shadow 0.2s;
 }
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+.header nav {
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
 form button:hover {
     transform: scale(1.05);
@@ -107,4 +123,28 @@ form button:hover {
 .alert-danger {
     background-color: #f8d7da;
     color: #721c24;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-size: 16px;
+    color: #333333;
+    margin-bottom: 20px;
+    -webkit-appearance: none; /* Para eliminar el estilo por defecto en navegadores webkit */
+    -moz-appearance: none; /* Para eliminar el estilo por defecto en navegadores Firefox */
+    appearance: none; /* Para eliminar el estilo por defecto en navegadores compatibles */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="none" stroke="black" stroke-width="2" d="M2 5l6 6 6-6"/></svg>'); /* Flecha personalizada */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px 12px;
+}
+
+select:focus {
+    border-color: #4A90E2;
+    outline: none;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
 }

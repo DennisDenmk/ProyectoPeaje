@@ -54,7 +54,7 @@ class VehiculoController extends Controller
             return back()->withErrors(['placa' => 'El vehículo no tiene un cliente asociado.']);
         }
 
-        $tipo_vehiculo = $vehiculo->tipo_vehiculo;
+        $tipo_vehiculo = $vehiculo->tipo_Vehiculo;
         $tarifas = [
             1 => 1.00, // Moto
             2 => 2.00, // Carro
@@ -78,15 +78,13 @@ class VehiculoController extends Controller
         $cliente->saldo -= $costo;
         $cliente->save();
 
-        $empleado = Auth::guard('empleado')->user(); // Obtener el empleado autenticado
-
         // Registrar el cobro en la tabla finanzas
         Finanza::create([
             'id_peaje' => $id_peaje,
             'saldo' => $costo,
             'fecha' => now(),
             'placa' => $vehiculo->placa,
-            'tipo_Vehiculo' => $vehiculo->tipo_vehiculo, // Nombre del campo ajustado
+            'tipo_Vehiculo' => $vehiculo->tipo_Vehiculo, // Nombre del campo ajustado
             'tipo_pago' => 2 // Tipo 2 para pagos desde emularTelepass
         ]);
 

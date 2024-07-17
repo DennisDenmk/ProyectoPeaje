@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vehiculo;
 use App\Models\Finanza;
+use App\Models\Cliente;
 
 class VehiculoController extends Controller
 {
@@ -16,6 +17,7 @@ class VehiculoController extends Controller
     public function asociar(Request $request)
     {
         $request->validate([
+            'cedula' => 'required|string|max:10',
             'placa' => 'required|string|max:10',
         ]);
 
@@ -25,7 +27,11 @@ class VehiculoController extends Controller
             return back()->withErrors(['placa' => 'El vehículo no está registrado.']);
         }
 
-        $cliente = auth()->user();
+        $cliente = Cliente::where('cedula', $request->input('cedula'))->first();
+
+        if (!$cliente) {
+            return back()->withErrors(['cedula' => 'El cliente no está registrado.']);
+        }
 
         $vehiculo->id_cliente = $cliente->id_cliente;
         $vehiculo->save();
